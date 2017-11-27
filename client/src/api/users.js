@@ -1,4 +1,4 @@
-const CREATE_URL = (path = "") => `https://localhost:9517/api/users/${path}`;
+const CREATE_URL = (path = "") => `http://localhost:9517/api/users/${path}`;
 
 const login = credentials => {
   return fetch(CREATE_URL("login"), {
