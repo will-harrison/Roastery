@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import styled from 'styled-components';
-import api from '../api';
+import styled from "styled-components";
+import api from "../api";
 
 class Inventory extends Component {
   constructor(props) {
@@ -8,8 +8,15 @@ class Inventory extends Component {
     this.state = {
       items: [],
       filters: {},
-      sortOrder: ["greenBulk", "roastedBulk", "bagged10", "bagged5", "bagged1", "bagged12oz"]
-    }
+      sortOrder: [
+        "greenBulk",
+        "roastedBulk",
+        "bagged10",
+        "bagged5",
+        "bagged1",
+        "bagged12oz"
+      ]
+    };
   }
 
   componentDidMount() {
@@ -18,19 +25,15 @@ class Inventory extends Component {
         return {
           ...state,
           items
-        }
-      })
-    })
+        };
+      });
+    });
   }
 
   render() {
     let { items, sortOrder } = this.state;
-    console.log(this.state)
-    return (
-      <div>
-
-      </div>
-    );
+    console.log(this.state);
+    return <div />;
   }
 }
 

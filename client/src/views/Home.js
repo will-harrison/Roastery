@@ -10,10 +10,14 @@ class Home extends Component {
           <WorkOrderKanban />
         </div>
         <div style={{ display: "flex", justifyContent: "center" }}>
-          <button>Add Item</button>
+          <button onClick={() => this.props.history.push("/addItem")}>
+            Add Item
+          </button>
         </div>
         <div style={{ display: "flex", justifyContent: "center" }}>
-          <button>Inventory</button>
+          <button onClick={() => this.props.history.push("/inventory")}>
+            Inventory
+          </button>
         </div>
       </div>
     );

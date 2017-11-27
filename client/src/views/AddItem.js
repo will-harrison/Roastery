@@ -44,7 +44,7 @@ class AddItem extends Component {
     let { items } = this.state;
     return (
       <div>
-        <h1>Add Item</h1>
+        <h1 style={{ margin: 0, padding: 10 }}>Add Item</h1>
         <form onSubmit={this.onFormSubmit}>
           <input
             placeholder={`Name, Example: Ethiopia Guji Kercha`}
