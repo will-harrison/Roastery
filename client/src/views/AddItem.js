@@ -23,12 +23,28 @@ class AddItem extends Component {
   onFormSubmit = submitEvent => {
     submitEvent.preventDefault();
     let item = this.state.name + this.state.description;
-    api.items.createItem(item).catch(err => console.log(err));
+    api.items
+      .createItem(item)
+      .then(data => {
+        let items = [];
+        for (item in data) {
+          items.push(item);
+        }
+
+        this.setState(state => {
+          return {
+            ...state,
+            items: items
+          };
+        });
+      })
+      .catch(err => console.log(err));
   };
   render() {
+    let { items } = this.state;
     return (
       <div>
-        <h1>AddItem</h1>
+        <h1>Add Item</h1>
         <form onSubmit={this.onFormSubmit}>
           <input
             placeholder={`Name, Example: Ethiopia Guji Kercha`}
@@ -44,6 +60,12 @@ class AddItem extends Component {
           />
           <input type="submit" />
         </form>
+        {items.map(item => (
+          <div key={item.id}>
+            <div>Coffee Name:{item.name}</div>
+            <div>Description:{item.discription}</div>
+          </div>
+        ))}
       </div>
     );
   }
