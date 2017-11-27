@@ -1,3 +1,5 @@
 module.exports = [
-  ...require("./users")
-]
+  ...require("./users"),
+  ...require("./items"),
+  ...require("./inventory")
+];
