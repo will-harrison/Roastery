@@ -1,0 +1,142 @@
+[
+  {
+    "itemId": "1000",
+    "inventory": {
+      "greenBulk": {
+        "onHand": 20,
+        "onOrder": 0,
+        "nextDueDate": null
+      },
+      "roastedBulk": {
+        "onHand": 20,
+        "onOrder": 0,
+        "nextDueDate": null
+      },
+      "bagged10": {
+        "onHand": 5,
+        "onOrder": 0,
+        "nextDueDate": null
+      },
+      "bagged5": {
+        "onHand": 1,
+        "onOrder": 0,
+        "nextDueDate": null
+      },
+      "bagged1": {
+        "onHand": 10,
+        "onOrder": 0,
+        "nextDueDate": null
+      },
+      "bagged12oz": {
+        "onHand": 55,
+        "onOrder": 0,
+        "nextDueDate": null
+      }
+    }
+  },
+  {
+    "itemId": "1004",
+    "inventory": {
+      "greenBulk": {
+        "onHand": 20,
+        "onOrder": 0,
+        "nextDueDate": null
+      },
+      "roastedBulk": {
+        "onHand": 20,
+        "onOrder": 0,
+        "nextDueDate": null
+      },
+      "bagged10": {
+        "onHand": 2,
+        "onOrder": 0,
+        "nextDueDate": null
+      },
+      "bagged5": {
+        "onHand": 0,
+        "onOrder": 0,
+        "nextDueDate": null
+      },
+      "bagged1": {
+        "onHand": 5,
+        "onOrder": 0,
+        "nextDueDate": null
+      },
+      "bagged12oz": {
+        "onHand": 45,
+        "onOrder": 0,
+        "nextDueDate": null
+      }
+    }
+  },
+  {
+    "itemId": "1007",
+    "inventory": {
+      "greenBulk": {
+        "onHand": 0,
+        "onOrder": 0,
+        "nextDueDate": null
+      },
+      "roastedBulk": {
+        "onHand": 10,
+        "onOrder": 0,
+        "nextDueDate": null
+      },
+      "bagged10": {
+        "onHand": 10,
+        "onOrder": 0,
+        "nextDueDate": null
+      },
+      "bagged5": {
+        "onHand": 5,
+        "onOrder": 0,
+        "nextDueDate": null
+      },
+      "bagged1": {
+        "onHand": 1,
+        "onOrder": 0,
+        "nextDueDate": null
+      },
+      "bagged12oz": {
+        "onHand": 70,
+        "onOrder": 0,
+        "nextDueDate": null
+      }
+    }
+  },
+  {
+    "itemId": "1005",
+    "inventory": {
+      "greenBulk": {
+        "onHand": 0,
+        "onOrder": 0,
+        "nextDueDate": null
+      },
+      "roastedBulk": {
+        "onHand": 0,
+        "onOrder": 0,
+        "nextDueDate": null
+      },
+      "bagged10": {
+        "onHand": 0,
+        "onOrder": 0,
+        "nextDueDate": null
+      },
+      "bagged5": {
+        "onHand": 0,
+        "onOrder": 0,
+        "nextDueDate": null
+      },
+      "bagged1": {
+        "onHand": 0,
+        "onOrder": 0,
+        "nextDueDate": null
+      },
+      "bagged12oz": {
+        "onHand": 0,
+        "onOrder": 0,
+        "nextDueDate": null
+      }
+    }
+  }
+]
