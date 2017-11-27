@@ -1,0 +1,42 @@
+[
+  {
+    "name": "Ethiopia Guji Kercha",
+    "description": "Guji Zone, Kercha Woreda",
+    "id": "1000"
+  },
+  {
+    "name": "Organic Guatemala Huehuetenango",
+    "description": "Huehuetenango",
+    "id": "1001"
+  },
+  {
+    "name": "Colombia Huila Montañita-Timaña",
+    "description": "Montañita-Timaña",
+    "id": "1002"
+  },
+  {
+    "name": "El Salvador Menendez Estates Finca Las Delicias",
+    "description": "Apaneca-Ilamapatec Mountains, near Ataco town",
+    "id": "1003"
+  },
+  {
+    "name": "Organic Sumatra Ketiara",
+    "description": "Takengon Highland in Central Aceh",
+    "id": "1004"
+  },
+  {
+    "name": "Colombia 'Huila Best Cup' Auction Lot-Jose Ancizar Lanza",
+    "description": "Acevedo, Huila",
+    "id": "1005"
+  },
+  {
+    "name": "Ethiopia Guji Shakiso Mormora Farm",
+    "description": "Guji Zone, Shakiso",
+    "id": "1006"
+  },
+  {
+    "name": "Kenya Kirinyaga Muthigiini AA",
+    "description": "Kirinyaga District, Njukiini",
+    "id": "1007"
+  }
+]

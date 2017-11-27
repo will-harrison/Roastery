@@ -19,25 +19,31 @@ class AddItem extends Component {
       };
     });
   };
-
-  onFormSubmit = submitEvent => {
-    submitEvent.preventDefault();
-    let item = this.state.name + this.state.description;
+  getAllItems = () => {
     api.items
-      .createItem(item)
+      .getItems()
       .then(data => {
-        let items = [];
-        for (item in data) {
-          items.push(item);
-        }
-
         this.setState(state => {
           return {
             ...state,
-            items: items
+            items: data
           };
         });
       })
+      .catch(err => console.log(err));
+  };
+  componentDidMount() {
+    this.getAllItems();
+  }
+  onFormSubmit = submitEvent => {
+    submitEvent.preventDefault();
+    let item = {
+      name: this.state.name,
+      description: this.state.description
+    };
+    api.items
+      .createItem(item)
+      .then(() => this.getAllItems())
       .catch(err => console.log(err));
   };
   render() {
@@ -62,8 +68,8 @@ class AddItem extends Component {
         </form>
         {items.map(item => (
           <div key={item.id}>
-            <div>Coffee Name:{item.name}</div>
-            <div>Description:{item.discription}</div>
+            <div>Coffee Name: {item.name}</div>
+            <div>Description: {item.description}</div>
           </div>
         ))}
       </div>

@@ -1,9 +1,12 @@
-module.exports = (db) => {
+module.exports = db => {
   let Inventory = db.createModel("Inventory", {
     itemId: db.type.string(),
     inventory: db.type.object().schema({
       greenBulk: db.type.object().schema({
-        type: db.type.string().required().default("Green Bulk"),
+        type: db.type
+          .string()
+          .required()
+          .default("Green Bulk"),
         minValue: db.type.number().default(50),
         unitOfMeasure: db.type.string().default("lbs"),
         onHand: db.type.number(),
@@ -44,7 +47,7 @@ module.exports = (db) => {
       }),
       bagged12oz: db.type.object().schema({
         type: db.type.string().default("12 oz Bagged"),
-        minValue: db.type.number().default(.75),
+        minValue: db.type.number().default(0.75),
         unitOfMeasure: db.type.string().default("oz"),
         onHand: db.type.number(),
         onOrder: db.type.number(),
@@ -54,4 +57,4 @@ module.exports = (db) => {
   });
 
   return Inventory;
-}
+};
