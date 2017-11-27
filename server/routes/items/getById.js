@@ -2,7 +2,8 @@ module.exports = {
   method: "GET",
   path: "/api/items/{id}",
   config: {
-    handler: function(request, reply) {
+    auth: { mode: "optional" },
+    handler: function (request, reply) {
       let { id } = request.params;
       this.models.Item
         .get(id)
