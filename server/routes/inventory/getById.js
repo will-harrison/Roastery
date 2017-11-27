@@ -1,16 +1,18 @@
 module.exports = {
   method: "GET",
-  path: "/api/users/{id}",
+  path: "/api/inventory/{id}",
   config: {
     handler: function(request, reply) {
       let { id } = request.params;
-      this.models.User
+      this.models.Inventory
         .get(id)
         .then(res => {
-          delete res.password;
           reply(res);
         })
-        .catch(err => reply(err));
+        .catch(err => {
+          console.log(err);
+          reply(err);
+        });
     }
   }
 };
