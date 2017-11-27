@@ -46,6 +46,7 @@ class Signup extends Component {
             placeholder={"CompanyName"}
             onChange={this.onInputChange}
           />
+          <br />
           <input
             required
             type={"email"}
@@ -53,6 +54,7 @@ class Signup extends Component {
             placeholder={"Email"}
             onChange={this.onInputChange}
           />
+          <br />
           <input
             required
             type={"password"}
@@ -60,6 +62,8 @@ class Signup extends Component {
             placeholder={"Password"}
             onChange={this.onInputChange}
           />
+          <br />
+          <br />
           <input type={"submit"} value={"Signup"} />
         </form>
       </div>
