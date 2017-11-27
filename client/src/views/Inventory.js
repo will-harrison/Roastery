@@ -28,12 +28,7 @@ class Inventory extends Component {
     console.log(this.state)
     return (
       <div>
-        {items.map(i => (
-          <Item key={i.id}>
-            <ItemName>{i.name}</ItemName>
-            <ItemDescription>{i.description}</ItemDescription>
-          </Item>
-        ))}
+
       </div>
     );
   }
