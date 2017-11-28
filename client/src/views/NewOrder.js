@@ -82,9 +82,11 @@ class NewOrder extends Component {
   onFormSubmit = submitEvent => {
     submitEvent.preventDefault();
     let { item, type, inventoryType, orderQty, date } = this.state;
-    api.inventory.update(item.id, { inventoryType: type, qty: orderQty, dueDate: date }).then(data => {
-      console.log(data)
-    })
+    api.inventory
+      .update(item.id, { inventoryType: type, qty: orderQty, dueDate: date })
+      .then(data => {
+        console.log(data);
+      });
   };
 
   checkOrderMinimum = () => {
@@ -133,7 +135,7 @@ class NewOrder extends Component {
             />
             <span>
               {"  "}
-              {minQty} minimum order quantity.
+              {minQty} lbs minimum order quantity.
             </span>
           </FormRow>
 
