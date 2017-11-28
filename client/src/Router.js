@@ -17,7 +17,6 @@ class Router extends Component {
       <BrowserRouter>
         <div
           style={{
-            height: "100vh",
             backgroundColor: "#FDF9F1"
           }}
         >
