@@ -6,6 +6,10 @@ import Login from "./views/Login";
 import Signup from "./views/Signup";
 import Inventory from "./views/Inventory";
 import AddItem from "./views/AddItem";
+import BaggingOrder from "./views/BaggingOrder";
+import Need from "./views/Need";
+import NewOrder from "./views/NewOrder";
+import RoastOrder from "./views/RoastOrder";
 
 class Router extends Component {
   render() {
@@ -22,7 +26,11 @@ class Router extends Component {
             <Route exact path={"/signup"} component={Signup} />
             <Route exact path={"/login"} component={Login} />
             <Route exact path={"/inventory"} component={Inventory} />
-            <Route exact path={"/addItem"} component={AddItem} />
+            <Route exact path={"/add-Item"} component={AddItem} />
+            <Route exact path={"/bagging-order"} component={BaggingOrder} />
+            <Route exact path={"/need"} component={Need} />
+            <Route exact path={"/new-order"} component={NewOrder} />
+            <Route exact path={"/roast-order"} component={RoastOrder} />
           </Switch>
         </div>
       </BrowserRouter>
