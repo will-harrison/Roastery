@@ -1,7 +1,9 @@
 import React, { Component } from "react";
 import api from "../api";
 import jwt from "jsonwebtoken";
+import { format } from "date-fns";
 import PageHeader from "../components/PageHeader";
+import styled from "styled-components";
 
 class NewOrder extends Component {
   constructor() {
@@ -13,6 +15,7 @@ class NewOrder extends Component {
       items: [],
       item: "",
       minQty: 0,
+      date: "",
       inventoryType: {
         bagged12oz: {
           type: "12 oz Bagged",
@@ -77,11 +80,14 @@ class NewOrder extends Component {
     );
   };
 
-  onSubmit = submitEvent => {
+  onFormSubmit = submitEvent => {
     submitEvent.preventDefault();
-    let { item, type, inventoryType } = this.state;
-
-    // minOrderQty = inventoryType[type].minValue;
+    let { item, type, inventoryType, orderQty, date } = this.state;
+    api.inventory
+      .update(item.id, { inventoryType: type, qty: orderQty, dueDate: date })
+      .then(data => {
+        console.log(data);
+      });
   };
 
   checkOrderMinimum = () => {
@@ -97,47 +103,72 @@ class NewOrder extends Component {
 
   render() {
     let { type, inventoryType, items, minQty } = this.state;
+    console.log(format(new Date(), "YYYY-MM-DD"));
+    console.log(format(new Date(2014, 1, 11), "MM/DD/YYYY"));
     return (
       <div>
         <PageHeader>New Order</PageHeader>
         <form onSubmit={this.onFormSubmit}>
-          <select
-            required
-            name={"item"}
-            onChange={this.onInputChange}
-            placeholder={"Coffee Origin"}
-          >
-            {items.map(i => <option key={i.id}>{i.item.name}</option>)}
-          </select>
-          <br />
-          <select
-            required
-            name={"type"}
-            onChange={this.onInputChange}
-            placeholder={"Bagged"}
-          >
-            <option value={"bagged12oz"}>12 oz</option>
-            <option value={"bagged1"}>1 lb</option>
-            <option value={"bagged5"}>5 lbs</option>
-            <option value={"bagged10"}>10 lbs</option>
-            <option value={"roastedBulk"}>Roasted Bulk</option>
-            <option value={"greenBulk"}>Green Bulk</option>
-          </select>
-          <br />
-          <input
-            type={"number"}
-            name={"orderQty"}
-            placeholder={"Order Quantity"}
-            value={this.state.orderQty}
-            onChange={this.onInputChange}
-          />
-          <span>{minQty} minimum order quantity.</span>
-          <br />
-          <input type="submit" value={"Order"} />
+          <FormRow>
+            <label>Coffee Origin: </label>
+            <select required name={"item"} onChange={this.onInputChange}>
+              {items.map(i => (
+                <option key={i.id} value={i.id}>
+                  {i.item.name}
+                </option>
+              ))}
+            </select>
+          </FormRow>
+
+          <FormRow>
+            <label>Bagged: </label>
+            <select required name={"type"} onChange={this.onInputChange}>
+              <option value={"bagged12oz"}>12 oz</option>
+              <option value={"bagged1"}>1 lb</option>
+              <option value={"bagged5"}>5 lbs</option>
+              <option value={"bagged10"}>10 lbs</option>
+              <option value={"roastedBulk"}>Roasted Bulk</option>
+              <option value={"greenBulk"}>Green Bulk</option>
+            </select>
+          </FormRow>
+
+          <FormRow>
+            <label>Order Quantity: </label>
+            <input
+              type={"number"}
+              name={"orderQty"}
+              value={this.state.orderQty}
+              onChange={this.onInputChange}
+            />
+            <span>
+              {"  "}
+              {minQty} lbs minimum order quantity.
+            </span>
+          </FormRow>
+
+          <FormRow>
+            <label>Date Needed By: </label>
+            <input
+              type="date"
+              name={"date"}
+              value={this.state.date}
+              onChange={this.onInputChange}
+              value={new format(new Date(), "YYYY-MM-DD")}
+            />
+          </FormRow>
+
+          <FormRow>
+            <input type="submit" value={"Order"} />
+          </FormRow>
         </form>
       </div>
     );
   }
 }
+
+const FormRow = styled.div`
+  padding: 2px;
+  margin: 2px;
+`;
 
 export default NewOrder;
