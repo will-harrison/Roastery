@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import api from "../api";
+import jwt from "jsonwebtoken";
 
 class NewOrder extends Component {
   constructor() {
@@ -58,7 +60,11 @@ class NewOrder extends Component {
     submitEvent.preventDefault();
     let { item, type, inventoryType } = this.state;
 
-    minOrderQty = inventoryType[type].minValue;
+    // minOrderQty = inventoryType[type].minValue;
+
+    api.items.create(this.state.item).then(item => {
+      this.props.history.push(`/inventory`);
+    });
   };
 
   render() {
@@ -66,23 +72,35 @@ class NewOrder extends Component {
       <div>
         <h1>New Order</h1>
         <form onSubmit={this.onFormSubmit}>
-          <select required name={"item"} onChange={this.onInputChange}>
+          <select
+            required
+            name={"item"}
+            onChange={this.onInputChange}
+            placeholder={"Coffee Origin"}
+          >
             <option value={"Nicuraguan"}>Nicuraguan</option>
             <option value={"Venezualan"}>Venezualan</option>
             <option value={"Colombian"}>Colombian</option>
           </select>
           <br />
-          <select required name={"type"} onChange={this.onInputChange}>
+          <select
+            required
+            name={"type"}
+            onChange={this.onInputChange}
+            placeholder={"Bagged"}
+          >
             <option value={"bagged12oz"}>12 oz</option>
             <option value={"bagged1"}>1 lb</option>
             <option value={"bagged5"}>5 lbs</option>
             <option value={"bagged10"}>10 lbs</option>
-            <option value={"roastedBulk"}>5 lbs increments</option>
-            <option value={"greenBulk"}>10 lbs increments</option>
+            <option value={"roastedBulk"}>5 lbs Increments</option>
+            <option value={"greenBulk"}>10 lbs Increments</option>
           </select>
           <br />
           <input
             type={"number"}
+            name={"orderQty"}
+            placeholder={"Order Quantity"}
             value={this.state.orderQty}
             onChange={this.onInputChange}
           />
@@ -94,11 +112,3 @@ class NewOrder extends Component {
 }
 
 export default NewOrder;
-
-<Select required name={"clothingType"} onChange={this.onInputChange}>
-  <option value="Dresses">Dresses</option>
-  <option value="Tops">Tops</option>
-  <option value="Bottoms">Bottoms</option>
-  <option value="Coats">Coats</option>
-  <option value="Shoes">Shoes</option>
-</Select>;

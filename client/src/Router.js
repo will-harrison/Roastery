@@ -5,8 +5,8 @@ import Home from "./views/Home";
 import Login from "./views/Login";
 import Signup from "./views/Signup";
 import Inventory from "./views/Inventory";
-
 import AddItem from "./views/AddItem";
+
 class Router extends Component {
   render() {
     return (
