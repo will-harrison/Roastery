@@ -6,20 +6,26 @@ const getAll = () => {
     .catch(err => console.log(err));
 };
 
-const getById = (id) => {
+const getAllOrders = () => {
+  return fetch(CREATE_URL("orders"))
+    .then(response => response.json())
+    .catch(err => console.log(err));
+};
+
+const getById = id => {
   return fetch(CREATE_URL(id))
     .then(response => response.json())
-    .catch(err => console.log(err))
-}
+    .catch(err => console.log(err));
+};
 
-const create = (data) => {
+const create = data => {
   return fetch(CREATE_URL(), {
     method: "POST",
     body: JSON.stringify(data)
   })
     .then(response => response.json())
-    .catch(err => console.log(err))
-}
+    .catch(err => console.log(err));
+};
 
 const update = (id, data) => {
   return fetch(CREATE_URL(id), {
@@ -27,12 +33,13 @@ const update = (id, data) => {
     body: JSON.stringify(data)
   })
     .then(response => response.json())
-    .catch(err => console.log(err))
-}
+    .catch(err => console.log(err));
+};
 
 export default {
   getAll,
   getById,
   create,
-  update
+  update,
+  getAllOrders
 };

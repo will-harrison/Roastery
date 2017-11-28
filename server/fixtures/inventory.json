@@ -4,23 +4,23 @@
     "inventory": {
       "greenBulk": {
         "onHand": 20,
-        "onOrder": 0,
-        "nextDueDate": null
+        "onOrder": 1,
+        "nextDueDate": "Sat Dec 16 2017 00:00:00 GMT-0800 (PST)"
       },
       "roastedBulk": {
         "onHand": 20,
-        "onOrder": 0,
-        "nextDueDate": null
+        "onOrder": 2,
+        "nextDueDate": "Tue Nov 28 2017 08:51:08 GMT-0800 (PST)"
       },
       "bagged10": {
         "onHand": 5,
-        "onOrder": 0,
-        "nextDueDate": null
+        "onOrder": 10,
+        "nextDueDate": "Mon Dec 11 2017 00:00:00 GMT-0800 (PST)"
       },
       "bagged5": {
         "onHand": 1,
-        "onOrder": 0,
-        "nextDueDate": null
+        "onOrder": 4,
+        "nextDueDate": "Tue Dec 12 2017 00:00:00 GMT-0800 (PST)"
       },
       "bagged1": {
         "onHand": 10,
@@ -44,13 +44,13 @@
       },
       "roastedBulk": {
         "onHand": 20,
-        "onOrder": 0,
-        "nextDueDate": null
+        "onOrder": 2,
+        "nextDueDate": "Sat Dec 16 2017 00:00:00 GMT-0800 (PST)"
       },
       "bagged10": {
         "onHand": 2,
-        "onOrder": 0,
-        "nextDueDate": null
+        "onOrder": 6,
+        "nextDueDate": "Tue Dec 12 2017 00:00:00 GMT-0800 (PST)"
       },
       "bagged5": {
         "onHand": 0,
@@ -64,8 +64,8 @@
       },
       "bagged12oz": {
         "onHand": 45,
-        "onOrder": 0,
-        "nextDueDate": null
+        "onOrder": 35,
+        "nextDueDate": "Tue Nov 28 2017 08:51:08 GMT-0800 (PST)"
       }
     }
   },
