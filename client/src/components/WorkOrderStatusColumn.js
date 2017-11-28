@@ -3,16 +3,16 @@ import PropTypes from "prop-types";
 import { DropTarget } from "react-dnd";
 
 const style = {
-  // height: "12rem",
-  width: "12rem",
-  marginRight: "1.5rem",
-  marginBottom: "1.5rem",
+  flex: 1,
+  margin: "1.5%",
+  minWidth: "15%",
   color: "white",
   padding: "1rem",
   textAlign: "center",
   fontSize: "1rem",
   lineHeight: "normal",
-  float: "left"
+  backgroundColor: "#fff",
+  boxShadow: "rgba(40, 40, 40, 0.2) 1px 1px 17px 2px"
 };
 
 const columnTarget = {
@@ -35,7 +35,7 @@ class ApplicationStatusColumn extends Component {
     const { value, label, accepts, options, connectDropTarget } = this.props;
 
     return connectDropTarget(
-      <div style={{ ...style, border: "1px solid black" }}>
+      <div style={{ ...style }}>
         <h1 style={{ color: "black" }}>{label}</h1>
         {options}
       </div>

@@ -99,22 +99,18 @@ class WorkOrderKanban extends Component {
   render() {
     const { workOrders, statuses } = this.state;
 
-    return (
-      <div>
-        {statuses.map(({ accepts, value, label }, index) => (
-          <WorkOrderStatusColumn
-            key={index}
-            label={label}
-            accepts={accepts}
-            onDrop={item => this.handleDrop(index, item)}
-            options={workOrders
-              .filter(({ status }) => status !== "COMPLETE")
-              .filter(({ status }) => status === value)
-              .map(order => <WorkOrder key={index} {...order} />)}
-          />
-        ))}
-      </div>
-    );
+    return statuses.map(({ accepts, value, label }, index) => (
+      <WorkOrderStatusColumn
+        key={index}
+        label={label}
+        accepts={accepts}
+        onDrop={item => this.handleDrop(index, item)}
+        options={workOrders
+          .filter(({ status }) => status !== "COMPLETE")
+          .filter(({ status }) => status === value)
+          .map(order => <WorkOrder key={index} {...order} />)}
+      />
+    ));
   }
 }
 

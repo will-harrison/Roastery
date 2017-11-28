@@ -10,6 +10,7 @@ import BaggingOrder from "./views/BaggingOrder";
 import Need from "./views/Need";
 import NewOrder from "./views/NewOrder";
 import RoastOrder from "./views/RoastOrder";
+import Navbar from "./containers/Navbar";
 
 class Router extends Component {
   render() {
@@ -17,10 +18,10 @@ class Router extends Component {
       <BrowserRouter>
         <div
           style={{
-            height: "100vh",
             backgroundColor: "#FDF9F1"
           }}
         >
+          <Navbar />
           <Switch>
             <Route exact path={"/"} component={Home} />
             <Route exact path={"/signup"} component={Signup} />
