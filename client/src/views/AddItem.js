@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import api from "../api";
+import PageHeader from "../components/PageHeader";
+
 class AddItem extends Component {
   constructor() {
     super();
@@ -50,7 +52,7 @@ class AddItem extends Component {
     let { items } = this.state;
     return (
       <div>
-        <h1 style={{ margin: 0, padding: 10 }}>Add Item</h1>
+        <PageHeader>Add Item</PageHeader>
         <form onSubmit={this.onFormSubmit}>
           <input
             placeholder={`Name, Example: Ethiopia Guji Kercha`}

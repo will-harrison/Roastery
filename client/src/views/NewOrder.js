@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import api from "../api";
 import jwt from "jsonwebtoken";
+import PageHeader from "../components/PageHeader";
 
 class NewOrder extends Component {
   constructor() {
@@ -61,16 +62,12 @@ class NewOrder extends Component {
     let { item, type, inventoryType } = this.state;
 
     // minOrderQty = inventoryType[type].minValue;
-
-    api.items.create(this.state.item).then(item => {
-      this.props.history.push(`/inventory`);
-    });
   };
 
   render() {
     return (
       <div>
-        <h1>New Order</h1>
+        <PageHeader>New Order</PageHeader>
         <form onSubmit={this.onFormSubmit}>
           <select
             required
