@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import api from "../api";
+import styled from "styled-components";
 import PageHeader from "../components/PageHeader";
 
 class AddItem extends Component {
@@ -69,14 +70,35 @@ class AddItem extends Component {
           <input type="submit" />
         </form>
         {items.map(item => (
-          <div key={item.id}>
-            <div>Coffee Name: {item.name}</div>
-            <div>Description: {item.description}</div>
-          </div>
+          <List key={item.id}>
+            <Name>{item.name}</Name>
+            <div>{item.description}</div>
+          </List>
         ))}
       </div>
     );
   }
 }
+
+const Title = styled.h1`
+  font-size: 36px;
+  text-align: center;
+  color: #46351d;
+  margin: 0;
+  padding: 10px;
+`;
+const List = styled.div`
+  font-size: 16px;
+  color: #46351d;
+  margin: 5px;
+  padding: 10px;
+  paddingleft: 15px;
+
+  &:hover {
+    background-color: #476a6f;
+    color: #fdf5e6;
+  }
+`;
+const Name = styled.div`font-size: 20px;`;
 
 export default AddItem;
