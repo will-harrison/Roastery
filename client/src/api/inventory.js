@@ -28,8 +28,8 @@ const create = data => {
 };
 
 const update = (id, data) => {
-  return fetch(CREATE_URL(id), {
-    method: "POST",
+  return fetch(CREATE_URL(`${id}/update`), {
+    method: "PATCH",
     body: JSON.stringify(data),
     headers: { "Content-Type": "application/json" }
   })
