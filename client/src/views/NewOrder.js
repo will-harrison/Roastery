@@ -13,6 +13,7 @@ class NewOrder extends Component {
       items: [],
       item: "",
       minQty: 0,
+      date: "",
       inventoryType: {
         bagged12oz: {
           type: "12 oz Bagged",
@@ -77,11 +78,12 @@ class NewOrder extends Component {
     );
   };
 
-  onSubmit = submitEvent => {
+  onFormSubmit = submitEvent => {
     submitEvent.preventDefault();
-    let { item, type, inventoryType } = this.state;
-
-    // minOrderQty = inventoryType[type].minValue;
+    let { item, type, inventoryType, orderQty, date } = this.state;
+    api.inventory.update(item.id, { inventoryType: type, qty: orderQty, dueDate: date }).then(data => {
+      console.log(data)
+    })
   };
 
   checkOrderMinimum = () => {

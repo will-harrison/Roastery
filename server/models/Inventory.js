@@ -3,10 +3,7 @@ module.exports = db => {
     itemId: db.type.string(),
     inventory: db.type.object().schema({
       greenBulk: db.type.object().schema({
-        type: db.type
-          .string()
-          .required()
-          .default("Green Bulk"),
+        type: db.type.string().required().default("Green Bulk"),
         minValue: db.type.number().default(50),
         unitOfMeasure: db.type.string().default("lbs"),
         onHand: db.type.number(),
