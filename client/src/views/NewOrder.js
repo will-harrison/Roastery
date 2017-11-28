@@ -147,7 +147,7 @@ class NewOrder extends Component {
               name={"date"}
               value={this.state.date}
               onChange={this.onInputChange}
-              value={new format(new Date(), "YYYY-MM-DD")} />
+              value={"2017-12-31"} />
           </FormRow>
 
           <FormRow>
