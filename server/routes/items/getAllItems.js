@@ -6,6 +6,7 @@ module.exports = {
     handler: function (request, reply) {
       this.models.Item
         .filter({})
+        .getJoin()
         .then(result => reply(result))
         .catch(err => reply(err));
     }
