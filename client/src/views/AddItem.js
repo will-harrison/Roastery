@@ -99,6 +99,8 @@ const List = styled.div`
     color: #fdf5e6;
   }
 `;
-const Name = styled.div`font-size: 20px;`;
+const Name = styled.div`
+  font-size: 20px;
+`;
 
 export default AddItem;
