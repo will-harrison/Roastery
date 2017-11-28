@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import api from "../api";
 import jwt from "jsonwebtoken";
+import { format } from "date-fns";
 import PageHeader from "../components/PageHeader";
 import styled from "styled-components";
 
@@ -102,6 +103,8 @@ class NewOrder extends Component {
 
   render() {
     let { type, inventoryType, items, minQty } = this.state;
+    console.log(format(new Date(), "YYYY-MM-DD"));
+    console.log(format(new Date(2014, 1, 11), "MM/DD/YYYY"));
     return (
       <div>
         <PageHeader>New Order</PageHeader>
@@ -109,7 +112,11 @@ class NewOrder extends Component {
           <FormRow>
             <label>Coffee Origin: </label>
             <select required name={"item"} onChange={this.onInputChange}>
-              {items.map(i => <option key={i.id}>{i.item.name}</option>)}
+              {items.map(i => (
+                <option key={i.id} value={i.id}>
+                  {i.item.name}
+                </option>
+              ))}
             </select>
           </FormRow>
 
@@ -141,7 +148,13 @@ class NewOrder extends Component {
 
           <FormRow>
             <label>Date Needed By: </label>
-            <input type="date" />
+            <input
+              type="date"
+              name={"date"}
+              value={this.state.date}
+              onChange={this.onInputChange}
+              value={new format(new Date(), "YYYY-MM-DD")}
+            />
           </FormRow>
 
           <FormRow>
