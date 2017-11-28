@@ -9,13 +9,15 @@ class NewOrder extends Component {
 
     this.state = {
       orderQty: 0,
-      type: "",
+      type: "bagged12oz",
+      items: [],
       item: "",
+      minQty: 0,
       inventoryType: {
         bagged12oz: {
           type: "12 oz Bagged",
           minValue: 0.75,
-          unitOfMeasure: "oz"
+          unitOfMeasure: "lbs"
         },
         bagged1: {
           type: "1 lbs Bagged",
@@ -27,8 +29,8 @@ class NewOrder extends Component {
           minValue: 5,
           unitOfMeasure: "lbs"
         },
-        bagged1: {
-          type: "1 lbs Bagged",
+        bagged10: {
+          type: "10 lbs Bagged",
           minValue: 10,
           unitOfMeasure: "lbs"
         },
@@ -46,15 +48,33 @@ class NewOrder extends Component {
     };
   }
 
+  componentDidMount() {
+    // let { token } = jwt.decode(localStorage.getItem(token));
+    api.inventory.getAll().then(items => {
+      console.log(items);
+      this.setState(state => {
+        return {
+          ...state,
+          items
+        };
+      });
+    });
+  }
+
   onInputChange = changeEvent => {
     changeEvent.persist();
 
-    this.setState(state => {
-      return {
-        ...this.state,
-        [changeEvent.target.name]: changeEvent.target.value
-      };
-    });
+    this.setState(
+      state => {
+        return {
+          ...this.state,
+          [changeEvent.target.name]: changeEvent.target.value
+        };
+      },
+      () => {
+        this.checkOrderMinimum();
+      }
+    );
   };
 
   onSubmit = submitEvent => {
@@ -64,7 +84,19 @@ class NewOrder extends Component {
     // minOrderQty = inventoryType[type].minValue;
   };
 
+  checkOrderMinimum = () => {
+    let { type, inventoryType, orderQty } = this.state;
+    let minVal = inventoryType[type].minValue;
+    this.setState(state => {
+      return {
+        ...state,
+        minQty: minVal * Math.ceil(orderQty / minVal)
+      };
+    });
+  };
+
   render() {
+    let { type, inventoryType, items, minQty } = this.state;
     return (
       <div>
         <PageHeader>New Order</PageHeader>
@@ -75,9 +107,7 @@ class NewOrder extends Component {
             onChange={this.onInputChange}
             placeholder={"Coffee Origin"}
           >
-            <option value={"Nicuraguan"}>Nicuraguan</option>
-            <option value={"Venezualan"}>Venezualan</option>
-            <option value={"Colombian"}>Colombian</option>
+            {items.map(i => <option key={i.id}>{i.item.name}</option>)}
           </select>
           <br />
           <select
@@ -90,8 +120,8 @@ class NewOrder extends Component {
             <option value={"bagged1"}>1 lb</option>
             <option value={"bagged5"}>5 lbs</option>
             <option value={"bagged10"}>10 lbs</option>
-            <option value={"roastedBulk"}>5 lbs Increments</option>
-            <option value={"greenBulk"}>10 lbs Increments</option>
+            <option value={"roastedBulk"}>Roasted Bulk</option>
+            <option value={"greenBulk"}>Green Bulk</option>
           </select>
           <br />
           <input
@@ -101,6 +131,8 @@ class NewOrder extends Component {
             value={this.state.orderQty}
             onChange={this.onInputChange}
           />
+          <span>{minQty} minimum order quantity.</span>
+          <br />
           <input type="submit" value={"Order"} />
         </form>
       </div>

@@ -17,8 +17,8 @@ const signup = credentials => {
     method: "POST",
     body: JSON.stringify(credentials),
     headers: {
-      "Content-Type": "application/json",
-      Authorization: localStorage.getItem("token")
+      "Content-Type": "application/json"
+      // Authorization: localStorage.getItem("token")
     }
   })
     .then(response => response.json())
