@@ -44,7 +44,7 @@ class NewOrder extends Component {
         },
         roastedBulk: {
           type: "Roasted Bulk",
-          minValue: 5,
+          minValue: 1,
           unitOfMeasure: "lbs"
         }
       }
@@ -96,13 +96,13 @@ class NewOrder extends Component {
     this.setState(state => {
       return {
         ...state,
-        minQty: minVal * Math.ceil(orderQty / minVal)
+        minQty: minVal * Math.ceil(orderQty)
       };
     });
   };
 
   render() {
-    let { type, inventoryType, items, minQty } = this.state;
+    let { type, inventoryType, items, minQty, minValue } = this.state;
     return (
       <div>
         <PageHeader>New Order</PageHeader>
@@ -135,12 +135,14 @@ class NewOrder extends Component {
             <input
               type={"number"}
               name={"orderQty"}
+              min={0}
               value={this.state.orderQty}
               onChange={this.onInputChange}
             />
             <span>
+              {"  "}bags;
               {"  "}
-              {minQty} lbs minimum order quantity.
+              {minQty} pounds total quantity.
             </span>
           </FormRow>
 
@@ -150,7 +152,8 @@ class NewOrder extends Component {
               type="date"
               name={"date"}
               value={this.state.date}
-              onChange={this.onInputChange} />
+              onChange={this.onInputChange}
+            />
           </FormRow>
 
           <FormRow>
