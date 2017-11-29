@@ -24,7 +24,7 @@ class AddItem extends Component {
   };
   getAllItems = () => {
     api.items
-      .getItems()
+      .getAll()
       .then(data => {
         this.setState(state => {
           return {

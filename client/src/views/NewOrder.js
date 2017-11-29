@@ -53,7 +53,7 @@ class NewOrder extends Component {
 
   componentDidMount() {
     // let { token } = jwt.decode(localStorage.getItem(token));
-    api.inventory.getAll().then(items => {
+    api.items.getAll().then(items => {
       console.log(items);
       this.setState(state => {
         return {
@@ -112,7 +112,7 @@ class NewOrder extends Component {
             <select required name={"item"} onChange={this.onInputChange}>
               {items.map(i => (
                 <option key={i.id} value={i.id}>
-                  {i.item.name}
+                  {i.name}
                 </option>
               ))}
             </select>

@@ -3,11 +3,7 @@ import PageHeader from "../components/PageHeader";
 
 class Need extends Component {
   render() {
-    return (
-      <div>
-        <PageHeader>Need</PageHeader>
-      </div>
-    );
+    return <div />;
   }
 }
 
