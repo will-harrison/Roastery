@@ -23,7 +23,7 @@ const getItemById = id => {
     .catch(err => err);
 };
 
-const getItems = () => {
+const getAll = () => {
   return fetch(CREATE_URL(), {
     method: "GET",
     headers: {
@@ -37,5 +37,5 @@ const getItems = () => {
 export default {
   createItem,
   getItemById,
-  getItems
+  getAll
 };

@@ -4,7 +4,7 @@ class Need extends Component {
   render() {
     return (
       <div>
-        <h1>Need</h1>
+        <h1>Placed Orders</h1>
       </div>
     );
   }
