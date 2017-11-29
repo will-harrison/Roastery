@@ -48,7 +48,7 @@ class Navbar extends Component {
           <SLink to={"/roast-order"}>Roast Orders</SLink>
         </div>
         <div>
-          <SLink to={"/need"}>Placed Orders</SLink>
+          <SLink to={"/placed-orders"}>Placed Orders</SLink>
         </div>
         <div>
           <SLink to={"/bagging-order"}>Bagging Orders</SLink>

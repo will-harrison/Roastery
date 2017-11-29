@@ -8,7 +8,7 @@ import Signup from "./views/Signup";
 import Inventory from "./views/Inventory";
 import AddItem from "./views/AddItem";
 import BaggingOrder from "./views/BaggingOrder";
-import Need from "./views/Need";
+import PlacedOrders from "./views/PlacedOrders";
 import NewOrder from "./views/NewOrder";
 import RoastOrder from "./views/RoastOrder";
 import Navbar from "./containers/Navbar";
@@ -26,7 +26,7 @@ class Router extends Component {
             <Route exact path={"/inventory"} component={Inventory} />
             <Route exact path={"/add-Item"} component={AddItem} />
             <Route exact path={"/bagging-order"} component={BaggingOrder} />
-            <Route exact path={"/need"} component={Need} />
+            <Route exact path={"/placed-orders"} component={PlacedOrders} />
             <Route exact path={"/new-order"} component={NewOrder} />
             <Route exact path={"/roast-order"} component={RoastOrder} />
           </Switch>
