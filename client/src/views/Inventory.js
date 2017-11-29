@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import styled from "styled-components";
+import { format, parse } from 'date-fns';
 import api from "../api";
 import PageHeader from '../components/PageHeader';
 
@@ -33,8 +34,6 @@ class Inventory extends Component {
 
   render() {
     let { items, sortOrder } = this.state;
-    console.log(this.state);
-    if (!items) return <div>Loading</div>;
     return (
       <div>
         <PageHeader>Inventory</PageHeader>
@@ -52,13 +51,13 @@ class Inventory extends Component {
                 </tr>
               </thead>
               <tbody>
-                {sortOrder.map(j => (
-                  <tr>
+                {sortOrder.map((j, index) => (
+                  <TR key={index}>
                     <TD><InvType>{i.inventory[j].type}</InvType></TD>
                     <TD><Qty>{i.inventory[j].onHand}</Qty></TD>
                     <TD><Qty>{i.inventory[j].onOrder}</Qty></TD>
-                    <TD><Qty>{i.inventory[j].nextDueDate}</Qty></TD>
-                  </tr>
+                    <TD><Qty>{i.inventory[j].nextDueDate && format(parse(i.inventory[j].nextDueDate), "MM/DD/YYYY")}</Qty></TD>
+                  </TR>
                 ))}
               </tbody>
             </table>
@@ -101,7 +100,11 @@ const Qty = styled.div`
 
 const QtyText = styled.span``;
 
+const TR = styled.tr`
+`;
+
 const TD = styled.td`
+  border-bottom: 1px solid rgba(0,0,0, .1);
   padding: 2px 20px;
 `;
 

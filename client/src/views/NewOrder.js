@@ -84,7 +84,7 @@ class NewOrder extends Component {
     submitEvent.preventDefault();
     let { item, type, inventoryType, orderQty, date } = this.state;
     api.inventory
-      .update(item.id, { inventoryType: type, qty: orderQty, dueDate: date })
+      .update(item, { inventoryType: type, qty: orderQty, dueDate: date })
       .then(data => {
         console.log(data);
       });
@@ -103,8 +103,6 @@ class NewOrder extends Component {
 
   render() {
     let { type, inventoryType, items, minQty } = this.state;
-    console.log(format(new Date(), "YYYY-MM-DD"));
-    console.log(format(new Date(2014, 1, 11), "MM/DD/YYYY"));
     return (
       <div>
         <PageHeader>New Order</PageHeader>
@@ -152,9 +150,7 @@ class NewOrder extends Component {
               type="date"
               name={"date"}
               value={this.state.date}
-              onChange={this.onInputChange}
-              value={new format(new Date(), "YYYY-MM-DD")}
-            />
+              onChange={this.onInputChange} />
           </FormRow>
 
           <FormRow>

@@ -1,12 +1,14 @@
 import React, { Component } from "react";
 import api from "../api";
 import PageHeader from "../components/PageHeader";
+
 class BaggingOrder extends Component {
   constructor() {
     super();
 
     this.state = {
-      orders: []
+      orders: [],
+      bagTypes: ["bagged1", "bagged5", "bagged10", "bagged12oz"]
     };
   }
 
@@ -25,6 +27,9 @@ class BaggingOrder extends Component {
     return (
       <div>
         <PageHeader>Bag Order</PageHeader>
+
+        {orders.map(order => {
+        })}
 
         {orders.map(order => (
           <div>

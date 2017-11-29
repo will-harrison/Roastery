@@ -5,14 +5,15 @@ module.exports = {
     auth: { mode: "optional" },
     handler: function (request, reply) {
       let { id } = request.params;
-      let { type, orderQty, date } = request.payload;
+      let { inventoryType, qty, dueDate } = request.payload;
+      console.log(request.payload)
       this.models.Inventory
         .get(id)
         .update({
           inventory: {
-            [type]: {
-              onOrder: orderQty,
-              nextDueDate: date || null
+            [inventoryType]: {
+              onOrder: parseInt(qty),
+              nextDueDate: dueDate || null
             }
           }
         })
