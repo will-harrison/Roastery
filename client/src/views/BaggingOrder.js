@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import api from "../api";
 import PageHeader from "../components/PageHeader";
+import OnOrder from '../components/OnOrder';
 
 class BaggingOrder extends Component {
   constructor() {
@@ -8,7 +9,7 @@ class BaggingOrder extends Component {
 
     this.state = {
       orders: [],
-      bagTypes: ["bagged1", "bagged5", "bagged10", "bagged12oz"]
+      invTypes: ["bagged1", "bagged5", "bagged10", "bagged12oz"]
     };
   }
 
@@ -22,11 +23,12 @@ class BaggingOrder extends Component {
     });
   }
   render() {
-    let { orders } = this.state;
-    console.log(orders);
+    let { orders, invTypes } = this.state;
+    if (!orders) { <div>Loading</div> }
     return (
       <div>
         <PageHeader>Bag Order</PageHeader>
+<<<<<<< HEAD
 
         {orders.map(order => {})}
 
@@ -36,6 +38,9 @@ class BaggingOrder extends Component {
             <button>Bag</button>
           </div>
         ))}
+=======
+        <OnOrder orders={orders} invTypes={invTypes} />
+>>>>>>> 5d1d4a132756971c520fbe2a6426e2e0ac31280a
       </div>
     );
   }
