@@ -1,6 +1,6 @@
 module.exports = {
   method: "POST",
-  path: "/api/orders",
+  path: "/api/orders/create",
   config: {
     auth: { mode: "optional" },
     handler: function (request, reply) {

@@ -1,7 +1,7 @@
 const CREATE_URL = (path = "") => `http://localhost:9517/api/orders/${path}`;
 
 const createOrder = data => {
-  return fetch(CREATE_URL(), {
+  return fetch(CREATE_URL("create"), {
     method: "POST",
     body: JSON.stringify(data),
     headers: {
@@ -23,6 +23,16 @@ const getOrderById = id => {
     .catch(err => err);
 };
 
+const getOrdersByInventoryType = (filters) => {
+  return fetch(CREATE_URL(), {
+    method: "POST",
+    body: JSON.stringify(filters),
+    headers: { "Content-Type": "application/json" }
+  })
+    .then(response => response.json())
+    .catch(err => err)
+}
+
 const getOrders = () => {
   return fetch(CREATE_URL(), {
     method: "GET",
@@ -37,5 +47,6 @@ const getOrders = () => {
 export default {
   createOrder,
   getOrderById,
-  getOrders
+  getOrders,
+  getOrdersByInventoryType
 };

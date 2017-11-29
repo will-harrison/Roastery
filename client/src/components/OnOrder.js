@@ -1,7 +1,6 @@
 import React from 'react';
 
 const OnOrder = ({ orders, invTypes }) => {
-  console.log(orders)
   return (
     <div>
       {orders.map(order => (
@@ -29,7 +28,6 @@ const OnOrder = ({ orders, invTypes }) => {
               })}
             </tbody>
           </table>
-
         </div>
       ))}
     </div>
