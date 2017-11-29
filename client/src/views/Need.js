@@ -1,11 +1,12 @@
 import React, { Component } from "react";
+import styled from "styled-components";
 
 class Need extends Component {
   render() {
     return (
-      <div>
+      <Div>
         <h1>Need</h1>
-      </div>
+      </Div>
     );
   }
 }

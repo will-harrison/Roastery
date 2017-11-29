@@ -86,7 +86,7 @@ class NewOrder extends Component {
     api.inventory
       .update(item, { inventoryType: type, qty: orderQty, dueDate: date })
       .then(data => {
-        console.log(data);
+        this.props.history.push(`/inventory`);
       });
   };
 
@@ -104,7 +104,7 @@ class NewOrder extends Component {
   render() {
     let { type, inventoryType, items, minQty, minValue } = this.state;
     return (
-      <div>
+      <Div>
         <PageHeader>New Order</PageHeader>
         <form onSubmit={this.onFormSubmit}>
           <FormRow>
@@ -160,7 +160,7 @@ class NewOrder extends Component {
             <input type="submit" value={"Order"} />
           </FormRow>
         </form>
-      </div>
+      </Div>
     );
   }
 }
