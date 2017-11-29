@@ -36,7 +36,7 @@ class Home extends Component {
           >
             New Order
           </Button>
-
+          <br />
           <Button
             fluid
             basic
@@ -44,15 +44,6 @@ class Home extends Component {
             onClick={() => this.props.history.push("/add-item")}
           >
             Add Item
-          </Button>
-
-          <Button
-            fluid
-            basic
-            color="grey"
-            onClick={() => this.props.history.push("/inventory")}
-          >
-            Inventory
           </Button>
         </div>
       </div>
