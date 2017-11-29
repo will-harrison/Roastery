@@ -33,12 +33,29 @@ class Navbar extends Component {
   render() {
     return (
       <Container>
-        <SLink to={"/"}>Home</SLink>
-        <SLink to={"/inventory"}>Inventory</SLink>
-        <SLink to={"/roast-order"}>Roast Orders</SLink>
-        <SLink to={"/need"}>Placed Orders</SLink>
-        <SLink to={"/bagging-order"}>Bagging Orders</SLink>
-        <Span onClick={this.logout}>Log Out</Span>
+        <Img
+          img
+          src="http://leafandbeancoffeeco.com/wp-content/uploads/2015/07/Beans.png"
+          alt="pic"
+        />
+        <div>
+          <SLink to={"/"}>Home</SLink>
+        </div>
+        <div>
+          <SLink to={"/inventory"}>Inventory</SLink>
+        </div>
+        <div>
+          <SLink to={"/roast-order"}>Roast Orders</SLink>
+        </div>
+        <div>
+          <SLink to={"/need"}>Placed Orders</SLink>
+        </div>
+        <div>
+          <SLink to={"/bagging-order"}>Bagging Orders</SLink>
+        </div>
+        <div>
+          <Span onClick={this.logout}>Log Out</Span>
+        </div>
       </Container>
     );
   }
@@ -50,7 +67,15 @@ class Navbar extends Component {
 const Container = styled.div`
   padding: 15px 15px;
   text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   background-color: #476a6f;
+`;
+
+const Img = styled.img`
+  height: 35px;
+  justify-content: center;
 `;
 
 const SLink = styled(Link)`
