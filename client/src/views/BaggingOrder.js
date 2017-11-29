@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import _ from 'lodash';
 import api from "../api";
 import PageHeader from "../components/PageHeader";
+import OnOrder from '../components/OnOrder';
 
 class BaggingOrder extends Component {
   constructor() {
@@ -9,7 +10,7 @@ class BaggingOrder extends Component {
 
     this.state = {
       orders: [],
-      invType: ["bagged1", "bagged5", "bagged10", "bagged12oz"]
+      invTypes: ["bagged1", "bagged5", "bagged10", "bagged12oz"]
     };
   }
 
@@ -23,33 +24,12 @@ class BaggingOrder extends Component {
     });
   }
   render() {
-    let { orders, invType } = this.state;
+    let { orders, invTypes } = this.state;
     if (!orders) { <div>Loading</div> }
     return (
       <div>
         <PageHeader>Bag Order</PageHeader>
-        {
-          orders.map((order) => {
-            return (
-              <div>
-                {order.item.name}
-                {
-                  invType.map((type) => {
-                    let inv = order.inventory[type];
-
-                    if (inv.onOrder < 1) return null;
-
-                    return <div>
-                      {inv.onOrder} {inv.type}
-
-                    </div>
-                  })
-                }
-              </div>
-            )
-          })
-        }
-
+        <OnOrder orders={orders} invTypes={invTypes} />
       </div>
     );
   }
