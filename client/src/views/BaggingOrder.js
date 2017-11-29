@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import api from "../api";
 import PageHeader from "../components/PageHeader";
-import OnOrder from '../components/OnOrder';
+import OnOrder from "../components/OnOrder";
 
 class BaggingOrder extends Component {
   constructor() {
@@ -24,7 +24,9 @@ class BaggingOrder extends Component {
   }
   render() {
     let { orders, invTypes } = this.state;
-    if (!orders) { <div>Loading</div> }
+    if (!orders) {
+      <div>Loading</div>;
+    }
     return (
       <div>
         <PageHeader>Bag Order</PageHeader>
