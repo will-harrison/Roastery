@@ -150,7 +150,8 @@ class NewOrder extends Component {
               type="date"
               name={"date"}
               value={this.state.date}
-              onChange={this.onInputChange} />
+              onChange={this.onInputChange}
+            />
           </FormRow>
 
           <FormRow>
@@ -163,7 +164,7 @@ class NewOrder extends Component {
 }
 
 const FormRow = styled.div`
-  padding: 2px;
+  padding: 4px;
   margin: 2px;
 `;
 

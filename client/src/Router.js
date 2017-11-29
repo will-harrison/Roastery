@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
+import styled from "styled-components";
 
 import Home from "./views/Home";
 import Login from "./views/Login";
@@ -16,11 +17,7 @@ class Router extends Component {
   render() {
     return (
       <BrowserRouter>
-        <div
-          style={{
-            backgroundColor: "#FDF9F1"
-          }}
-        >
+        <BackgroundColor>
           <Navbar />
           <Switch>
             <Route exact path={"/"} component={Home} />
@@ -33,10 +30,17 @@ class Router extends Component {
             <Route exact path={"/new-order"} component={NewOrder} />
             <Route exact path={"/roast-order"} component={RoastOrder} />
           </Switch>
-        </div>
+        </BackgroundColor>
       </BrowserRouter>
     );
   }
 }
+
+const BackgroundColor = styled.div`
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+  background-color: #fdf9f1;
+`;
 
 export default Router;

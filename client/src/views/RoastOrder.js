@@ -1,10 +1,11 @@
 import React, { Component } from "react";
+import PageHeader from "../components/PageHeader";
 
 class RoastOrder extends Component {
   render() {
     return (
       <div>
-        <h1>RoastOrder</h1>
+        <PageHeader>RoastOrder</PageHeader>
       </div>
     );
   }

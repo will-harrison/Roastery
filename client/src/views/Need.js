@@ -1,10 +1,11 @@
 import React, { Component } from "react";
+import PageHeader from "../components/PageHeader";
 
 class Need extends Component {
   render() {
     return (
       <div>
-        <h1>Need</h1>
+        <PageHeader>Need</PageHeader>
       </div>
     );
   }

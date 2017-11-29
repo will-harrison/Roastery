@@ -28,8 +28,7 @@ class BaggingOrder extends Component {
       <div>
         <PageHeader>Bag Order</PageHeader>
 
-        {orders.map(order => {
-        })}
+        {orders.map(order => {})}
 
         {orders.map(order => (
           <div>
