@@ -1,9 +1,9 @@
 const CREATE_URL = (path = "") => `http://localhost:9517/api/orders/${path}`;
 
-const createOrder = item => {
+const createOrder = data => {
   return fetch(CREATE_URL(), {
     method: "POST",
-    body: JSON.stringify(item),
+    body: JSON.stringify(data),
     headers: {
       "Content-Type": "application/json"
     }
