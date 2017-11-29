@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import _ from 'lodash';
 import api from "../api";
 import PageHeader from "../components/PageHeader";
 import OnOrder from '../components/OnOrder';
