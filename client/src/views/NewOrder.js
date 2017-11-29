@@ -104,7 +104,7 @@ class NewOrder extends Component {
   render() {
     let { type, inventoryType, items, minQty, minValue } = this.state;
     return (
-      <Div>
+      <div>
         <PageHeader>New Order</PageHeader>
         <form onSubmit={this.onFormSubmit}>
           <FormRow>
@@ -160,7 +160,7 @@ class NewOrder extends Component {
             <input type="submit" value={"Order"} />
           </FormRow>
         </form>
-      </Div>
+      </div>
     );
   }
 }
