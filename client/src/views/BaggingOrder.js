@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import _ from 'lodash';
 import api from "../api";
 import PageHeader from "../components/PageHeader";
 
@@ -8,7 +9,7 @@ class BaggingOrder extends Component {
 
     this.state = {
       orders: [],
-      bagTypes: ["bagged1", "bagged5", "bagged10", "bagged12oz"]
+      invType: ["bagged1", "bagged5", "bagged10", "bagged12oz"]
     };
   }
 
@@ -22,21 +23,33 @@ class BaggingOrder extends Component {
     });
   }
   render() {
-    let { orders } = this.state;
-    console.log(orders);
+    let { orders, invType } = this.state;
+    if (!orders) { <div>Loading</div> }
     return (
       <div>
         <PageHeader>Bag Order</PageHeader>
+        {
+          orders.map((order) => {
+            return (
+              <div>
+                {order.item.name}
+                {
+                  invType.map((type) => {
+                    let inv = order.inventory[type];
 
-        {orders.map(order => {
-        })}
+                    if (inv.onOrder < 1) return null;
 
-        {orders.map(order => (
-          <div>
-            {order.item.name}
-            <button>Bag</button>
-          </div>
-        ))}
+                    return <div>
+                      {inv.onOrder} {inv.type}
+
+                    </div>
+                  })
+                }
+              </div>
+            )
+          })
+        }
+
       </div>
     );
   }
