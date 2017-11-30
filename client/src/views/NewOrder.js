@@ -59,6 +59,7 @@ class NewOrder extends Component {
       this.setState(state => {
         return {
           ...state,
+          item: items[0].id,
           items
         };
       });
@@ -92,7 +93,9 @@ class NewOrder extends Component {
         dueDate: date
       })
       .then(() => {
-        this.props.history.push("/inventory");
+        api.inventory.update(item, { inventoryType: type, qty: orderQty, dueDate: date }).then(() => {
+          this.props.history.push("/inventory");
+        })
       });
     // api.inventory
     //   .update(item, { inventoryType: type, qty: orderQty, dueDate: date })
@@ -113,6 +116,7 @@ class NewOrder extends Component {
   };
 
   render() {
+    console.log(this.state);
     let { type, inventoryType, items, minQty, minValue } = this.state;
     return (
       <div>
