@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import api from "../api";
 import OnOrder from "../components/OnOrder";
 import PageHeader from "../components/PageHeader";
+import { Order, Name, Qty, SDate, Button } from "../components/Order";
 
 import { format } from "date-fns";
 
@@ -33,11 +34,12 @@ class RoastOrder extends Component {
         <PageHeader>Roast Orders</PageHeader>
 
         {orders.map(order => (
-          <div key={order.id}>
-            <div>{order.item.name}</div>
-            <div>{order.orderQty}</div>
-            <div>{format(order.dueDate, "MM/DD/YY")}</div>
-          </div>
+          <Order key={order.id}>
+            <Name>{order.item.name}</Name>
+            <Qty>{order.orderQty} lbs on order</Qty>
+            <SDate>Due {format(order.dueDate, "MM/DD/YY")}</SDate>
+            <Button>Roast</Button>
+          </Order>
         ))}
       </div>
     );

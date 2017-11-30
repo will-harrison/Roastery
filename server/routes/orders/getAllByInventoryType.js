@@ -6,6 +6,7 @@ module.exports = {
     handler: function (request, reply) {
       let inventoryType = request.payload;
       this.models.Order
+        .orderBy({ index: "dueDate" })
         .filter({ inventoryType } || {})
         .getJoin({ item: true })
         .then(res => {
