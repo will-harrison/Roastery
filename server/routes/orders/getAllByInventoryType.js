@@ -4,11 +4,17 @@ module.exports = {
   config: {
     auth: { mode: "optional" },
     handler: function (request, reply) {
-      let { filters } = request.payload;
+      let inventoryType = request.payload;
       this.models.Order
-        .filter(filters)
-        .then(res => reply(res))
-        .catch(err => reply(err))
+        .filter({ inventoryType } || {})
+        .getJoin({ item: true })
+        .then(res => {
+          reply(res)
+        })
+        .catch(err => {
+          console.log(err)
+          reply(err)
+        })
     }
   }
 }

@@ -23,14 +23,25 @@ const getOrderById = id => {
     .catch(err => err);
 };
 
-const getOrdersByInventoryType = (filters) => {
-  return fetch(CREATE_URL(), {
-    method: "POST",
-    body: JSON.stringify(filters),
-    headers: { "Content-Type": "application/json" }
+const getOrdersByInventoryType = (invTypes) => {
+  let ordersbyInvType = invTypes.map(inventoryType => {
+    return fetch(CREATE_URL(), {
+      method: "POST",
+      body: JSON.stringify(inventoryType),
+      headers: { "Content-Type": "application/json" }
+    })
+      .then(response => response.json())
+      .catch(err => err)
+  });
+
+  return Promise.all(ordersbyInvType).then(orders => {
+    orders = orders.reduce((allOrders, ordersOfType) => [
+      ...allOrders,
+      ...ordersOfType
+    ], [])
+
+    return orders;
   })
-    .then(response => response.json())
-    .catch(err => err)
 }
 
 const getOrders = () => {
