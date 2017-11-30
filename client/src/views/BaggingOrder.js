@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import api from "../api";
 import PageHeader from "../components/PageHeader";
-import OnOrder from "../components/OnOrder";
+import { format } from "date-fns";
 
 class BaggingOrder extends Component {
   constructor() {
@@ -9,29 +9,39 @@ class BaggingOrder extends Component {
 
     this.state = {
       orders: [],
-      invTypes: ["roastedBulk"]
+      invTypes: ["bagged12oz", "bagged1", "bagged5", "bagged10"]
     };
   }
 
   componentDidMount() {
-    api.inventory.getAll().then(data => {
+    let { invTypes } = this.state;
+    api.order.getOrdersByInventoryType(invTypes).then(orders => {
       this.setState(state => {
         return {
-          orders: data
+          ...state,
+          orders
         };
       });
     });
   }
 
   render() {
+    console.log(this.state);
     let { orders, invTypes } = this.state;
+
     if (!orders) {
-      <div>Loading</div>;
+      <div>No Pending Orders</div>;
     }
     return (
       <div>
         <PageHeader>Bag Order</PageHeader>
-        <OnOrder orders={orders} invTypes={invTypes} />
+        {orders.map(order => (
+          <div key={order.id}>
+            <div>{order.item.name}</div>
+            <div>{order.orderQty}</div>
+            <div>{format(order.dueDate, "MM/DD/YY")}</div>
+          </div>
+        ))}
       </div>
     );
   }
