@@ -5,13 +5,13 @@ import { format } from "date-fns";
 import { Order, Name, Qty, SDate, Button } from "../components/Order";
 import styled from "styled-components";
 
-class BaggingOrder extends Component {
+class PlacedOrders extends Component {
   constructor() {
     super();
 
     this.state = {
       orders: [],
-      invTypes: ["bagged12oz", "bagged1", "bagged5", "bagged10"]
+      invTypes: ["greenBulk"]
     };
   }
 
@@ -34,8 +34,8 @@ class BaggingOrder extends Component {
   closeOrder = id => {
     console.log(id);
     api.order.close(id).then(() => {
-      if (this.props.match.url === "/bagging-order") {
-        return (window.location = "/bagging-order");
+      if (this.props.match.url === "/placed-orders") {
+        return (window.location = "/placed-orders");
       }
       this.getInventory();
     });
@@ -45,30 +45,22 @@ class BaggingOrder extends Component {
     console.log(this.state);
     let { orders, invTypes } = this.state;
     if (!orders) {
-<<<<<<< HEAD
-      <div>Loading</div>;
-=======
-      <div>No Pending Orders</div>;
->>>>>>> 524dd1a9f4976a5afa03a7de0fb36327ff7e3e6e
+      return <div>No Pending Orders</div>;
     }
     return (
       <div>
-        <PageHeader>Bag Order</PageHeader>
-<<<<<<< HEAD
-        <OnOrder orders={orders} invTypes={invTypes} />
-=======
+        <PageHeader>Placed Orders</PageHeader>
         {orders.map(order => (
           <Order key={order.id}>
             <Name>{order.item.name}</Name>
             <Qty>{order.orderQty} lbs on order</Qty>
             <SDate>Due {format(order.dueDate, "MM/DD/YY")}</SDate>
-            <Button onClick={() => this.closeOrder(order.id)}>Bag</Button>
+            <Button onClick={() => this.closeOrder(order.id)}>Recieve</Button>
           </Order>
         ))}
->>>>>>> 524dd1a9f4976a5afa03a7de0fb36327ff7e3e6e
       </div>
     );
   }
 }
 
-export default BaggingOrder;
+export default PlacedOrders;

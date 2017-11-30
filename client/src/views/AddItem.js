@@ -55,19 +55,21 @@ class AddItem extends Component {
       <div>
         <PageHeader>Add Item</PageHeader>
         <form onSubmit={this.onFormSubmit}>
+          <label>Name, Example: Ethiopia Guji Kercha </label>
           <input
-            placeholder={`Name, Example: Ethiopia Guji Kercha`}
+            placeholder={"Name"}
             onChange={this.onInputChange}
             name={"name"}
             type="text"
           />
+          <label>Description</label>
           <input
             placeholder={"Description"}
             onChange={this.onInputChange}
             name={"description"}
             type="text"
           />
-          <input type="submit" />
+          <input type="submit" value={"AddItem"} />
         </form>
         {items.map(item => (
           <List key={item.id}>
