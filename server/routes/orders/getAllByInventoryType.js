@@ -8,6 +8,7 @@ module.exports = {
       this.models.Order
         .orderBy({ index: "dueDate" })
         .filter({ inventoryType } || {})
+        .filter({ status: "open" })
         .getJoin({ item: true })
         .then(res => {
           reply(res)
