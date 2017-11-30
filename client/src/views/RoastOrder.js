@@ -1,10 +1,6 @@
 import React, { Component } from "react";
-<<<<<<< HEAD
-import PageHeader from "../components/PageHeader";
-=======
-import api from '../api';
-import OnOrder from '../components/OnOrder';
->>>>>>> 5d1d4a132756971c520fbe2a6426e2e0ac31280a
+import api from "../api";
+import OnOrder from "../components/OnOrder";
 
 class RoastOrder extends Component {
   constructor(props) {
@@ -30,11 +26,7 @@ class RoastOrder extends Component {
     let { orders, invTypes } = this.state;
     return (
       <div>
-<<<<<<< HEAD
-        <PageHeader>RoastOrder</PageHeader>
-=======
         <OnOrder orders={orders} invTypes={invTypes} />
->>>>>>> 5d1d4a132756971c520fbe2a6426e2e0ac31280a
       </div>
     );
   }

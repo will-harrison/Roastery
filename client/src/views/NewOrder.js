@@ -58,6 +58,7 @@ class NewOrder extends Component {
       this.setState(state => {
         return {
           ...state,
+          item: items[0].id,
           items
         };
       });
@@ -102,9 +103,10 @@ class NewOrder extends Component {
   };
 
   render() {
+    console.log(this.state);
     let { type, inventoryType, items, minQty, minValue } = this.state;
     return (
-      <Div>
+      <div>
         <PageHeader>New Order</PageHeader>
         <form onSubmit={this.onFormSubmit}>
           <FormRow>
@@ -160,7 +162,7 @@ class NewOrder extends Component {
             <input type="submit" value={"Order"} />
           </FormRow>
         </form>
-      </Div>
+      </div>
     );
   }
 }
