@@ -1,6 +1,9 @@
 import React, { Component } from "react";
 import api from "../api";
 import OnOrder from "../components/OnOrder";
+import PageHeader from "../components/PageHeader";
+
+import { format } from "date-fns";
 
 class RoastOrder extends Component {
   constructor(props) {
@@ -12,7 +15,8 @@ class RoastOrder extends Component {
   }
 
   componentDidMount() {
-    api.inventory.getAll().then(orders => {
+    let { invTypes } = this.state;
+    api.order.getOrdersByInventoryType(invTypes).then(orders => {
       this.setState(state => {
         return {
           ...state,
@@ -26,7 +30,15 @@ class RoastOrder extends Component {
     let { orders, invTypes } = this.state;
     return (
       <div>
-        <OnOrder orders={orders} invTypes={invTypes} />
+        <PageHeader>Roast Orders</PageHeader>
+
+        {orders.map(order => (
+          <div key={order.id}>
+            <div>{order.item.name}</div>
+            <div>{order.orderQty}</div>
+            <div>{format(order.dueDate, "MM/DD/YY")}</div>
+          </div>
+        ))}
       </div>
     );
   }

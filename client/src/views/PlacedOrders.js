@@ -1,8 +1,7 @@
 import React, { Component } from "react";
-import { format } from 'date-fns';
+import { format } from "date-fns";
 import PageHeader from "../components/PageHeader";
 import api from "../api";
-import OnOrder from "../components/OnOrder";
 
 class PlacedOrders extends Component {
   constructor() {
@@ -21,13 +20,13 @@ class PlacedOrders extends Component {
         return {
           ...state,
           orders
-        }
-      })
-    })
+        };
+      });
+    });
   }
 
   render() {
-    console.log(this.state)
+    console.log(this.state);
     let { orders, invTypes } = this.state;
     if (!orders) {
       <div>No Pending Orders</div>;
