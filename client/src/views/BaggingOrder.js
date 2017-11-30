@@ -4,6 +4,7 @@ import PageHeader from "../components/PageHeader";
 import { format } from "date-fns";
 import { Order, Name, Qty, SDate, Button } from "../components/Order";
 import styled from "styled-components";
+import Navbar from "../containers/Navbar";
 
 class BaggingOrder extends Component {
   constructor() {
@@ -49,6 +50,7 @@ class BaggingOrder extends Component {
     }
     return (
       <div>
+        <Navbar />
         <PageHeader>Bag Order</PageHeader>
         {orders.map(order => (
           <Order key={order.id}>

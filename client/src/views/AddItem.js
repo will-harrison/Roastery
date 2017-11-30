@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import api from "../api";
 import styled from "styled-components";
 import PageHeader from "../components/PageHeader";
+import Navbar from "../containers/Navbar";
 
 class AddItem extends Component {
   constructor() {
@@ -53,6 +54,7 @@ class AddItem extends Component {
     let { items } = this.state;
     return (
       <div>
+        <Navbar />
         <PageHeader>Add Item</PageHeader>
         <form onSubmit={this.onFormSubmit}>
           <label>Name, Example: Ethiopia Guji Kercha </label>

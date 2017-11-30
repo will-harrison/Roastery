@@ -45,10 +45,10 @@ class Navbar extends Component {
           <SLink to={"/inventory"}>Inventory</SLink>
         </div>
         <div>
-          <SLink to={"/roast-order"}>Roast Orders</SLink>
+          <SLink to={"/placed-orders"}>Placed Orders</SLink>
         </div>
         <div>
-          <SLink to={"/placed-orders"}>Placed Orders</SLink>
+          <SLink to={"/roast-order"}>Roast Orders</SLink>
         </div>
         <div>
           <SLink to={"/bagging-order"}>Bagging Orders</SLink>
@@ -60,9 +60,6 @@ class Navbar extends Component {
     );
   }
 }
-
-// Navbar is only visible when the user is authenticated, so that
-// an unauthenticated user can not access any of these paths.
 
 const Container = styled.div`
   padding: 15px 15px;

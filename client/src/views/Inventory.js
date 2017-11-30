@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { format, parse } from "date-fns";
 import api from "../api";
 import PageHeader from "../components/PageHeader";
+import Navbar from "../containers/Navbar";
 
 class Inventory extends Component {
   constructor(props) {
@@ -36,6 +37,7 @@ class Inventory extends Component {
     let { items, sortOrder } = this.state;
     return (
       <div>
+        <Navbar />
         <PageHeader>Inventory</PageHeader>
         {items.map(i => (
           <Item key={i.id}>
@@ -89,16 +91,22 @@ const Item = styled.div`
   padding-left: 50px;
 `;
 
-const ItemName = styled.div`font-size: 24px;`;
+const ItemName = styled.div`
+  font-size: 24px;
+`;
 
 const ItemDescription = styled.div`
   padding-bottom: 10px;
   line-height: 2;
 `;
 
-const Inv = styled.div`margin-left: 15px;`;
+const Inv = styled.div`
+  margin-left: 15px;
+`;
 
-const InvType = styled.div`font-size: 20px;`;
+const InvType = styled.div`
+  font-size: 20px;
+`;
 
 const InvRow = styled.div``;
 
