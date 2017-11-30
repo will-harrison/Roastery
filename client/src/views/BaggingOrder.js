@@ -15,7 +15,7 @@ class BaggingOrder extends Component {
     };
   }
 
-  componentDidMount() {
+  getInventory = () => {
     let { invTypes } = this.state;
     api.order.getOrdersByInventoryType(invTypes).then(orders => {
       this.setState(state => {
@@ -25,6 +25,10 @@ class BaggingOrder extends Component {
         };
       });
     });
+  };
+
+  componentDidMount() {
+    this.getInventory();
   }
 
   closeOrder = id => {
@@ -33,7 +37,7 @@ class BaggingOrder extends Component {
       if (this.props.match.url === "/bagging-order") {
         return (window.location = "/bagging-order");
       }
-      this.props.history.push("/bagging-order");
+      this.getInventory();
     });
   };
 
@@ -41,11 +45,18 @@ class BaggingOrder extends Component {
     console.log(this.state);
     let { orders, invTypes } = this.state;
     if (!orders) {
+<<<<<<< HEAD
+      <div>Loading</div>;
+=======
       <div>No Pending Orders</div>;
+>>>>>>> 524dd1a9f4976a5afa03a7de0fb36327ff7e3e6e
     }
     return (
       <div>
         <PageHeader>Bag Order</PageHeader>
+<<<<<<< HEAD
+        <OnOrder orders={orders} invTypes={invTypes} />
+=======
         {orders.map(order => (
           <Order key={order.id}>
             <Name>{order.item.name}</Name>
@@ -54,6 +65,7 @@ class BaggingOrder extends Component {
             <Button onClick={() => this.closeOrder(order.id)}>Bag</Button>
           </Order>
         ))}
+>>>>>>> 524dd1a9f4976a5afa03a7de0fb36327ff7e3e6e
       </div>
     );
   }

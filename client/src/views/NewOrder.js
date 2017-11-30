@@ -58,6 +58,7 @@ class NewOrder extends Component {
       this.setState(state => {
         return {
           ...state,
+          item: items[0].id,
           items
         };
       });
@@ -114,6 +115,7 @@ class NewOrder extends Component {
   };
 
   render() {
+    console.log(this.state);
     let { type, inventoryType, items, minQty, minValue } = this.state;
     return (
       <div>

@@ -15,7 +15,7 @@ class PlacedOrders extends Component {
     };
   }
 
-  componentDidMount() {
+  getInventory = () => {
     let { invTypes } = this.state;
     api.order.getOrdersByInventoryType(invTypes).then(orders => {
       this.setState(state => {
@@ -25,6 +25,10 @@ class PlacedOrders extends Component {
         };
       });
     });
+  };
+
+  componentDidMount() {
+    this.getInventory();
   }
 
   closeOrder = id => {
@@ -33,7 +37,7 @@ class PlacedOrders extends Component {
       if (this.props.match.url === "/placed-orders") {
         return (window.location = "/placed-orders");
       }
-      this.props.history.push("/placed-orders");
+      this.getInventory();
     });
   };
 
@@ -41,7 +45,7 @@ class PlacedOrders extends Component {
     console.log(this.state);
     let { orders, invTypes } = this.state;
     if (!orders) {
-      <div>No Pending Orders</div>;
+      return <div>No Pending Orders</div>;
     }
     return (
       <div>

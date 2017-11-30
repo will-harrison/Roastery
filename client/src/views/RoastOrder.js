@@ -14,7 +14,7 @@ class RoastOrder extends Component {
     };
   }
 
-  componentDidMount() {
+  getInventory = () => {
     let { invTypes } = this.state;
     api.order.getOrdersByInventoryType(invTypes).then(orders => {
       this.setState(state => {
@@ -24,6 +24,10 @@ class RoastOrder extends Component {
         };
       });
     });
+  };
+
+  componentDidMount() {
+    this.getInventory();
   }
 
   closeOrder = id => {
@@ -32,7 +36,7 @@ class RoastOrder extends Component {
       if (this.props.match.url === "/roast-order") {
         return (window.location = "/roast-order");
       }
-      this.props.history.push("/roast-order");
+      this.getInventory();
     });
   };
 
@@ -40,6 +44,9 @@ class RoastOrder extends Component {
     let { orders, invTypes } = this.state;
     return (
       <div>
+<<<<<<< HEAD
+        <OnOrder orders={orders} invTypes={invTypes} />
+=======
         <PageHeader>Roast Orders</PageHeader>
 
         {orders.map(order => (
@@ -50,6 +57,7 @@ class RoastOrder extends Component {
             <Button onClick={() => this.closeOrder(order.id)}>Roast</Button>
           </Order>
         ))}
+>>>>>>> 524dd1a9f4976a5afa03a7de0fb36327ff7e3e6e
       </div>
     );
   }
