@@ -45,24 +45,24 @@ class WorkOrderKanban extends Component {
     this.setState(state => {
       return {
         workOrders: [
-          {
-            name: "Arabic",
-            pounds: 10,
-            status: "GREENBULK",
-            type: "WORKORDER"
-          },
-          {
-            name: "Venezualen",
-            pounds: 40,
-            status: "ROASTED",
-            type: "WORKORDER"
-          },
-          {
-            name: "Canadian",
-            pounds: 1,
-            status: "ROASTED",
-            type: "WORKORDER"
-          }
+          // {
+          //   name: "Arabic",
+          //   pounds: 10,
+          //   status: "GREENBULK",
+          //   type: "WORKORDER"
+          // },
+          // {
+          //   name: "Venezualen",
+          //   pounds: 40,
+          //   status: "ROASTED",
+          //   type: "WORKORDER"
+          // },
+          // {
+          //   name: "Canadian",
+          //   pounds: 1,
+          //   status: "ROASTED",
+          //   type: "WORKORDER"
+          // }
         ]
       };
     });
