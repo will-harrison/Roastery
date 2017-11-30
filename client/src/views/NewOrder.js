@@ -91,7 +91,9 @@ class NewOrder extends Component {
         dueDate: date
       })
       .then(() => {
-        this.props.history.push("/inventory");
+        api.inventory.update(item, { inventoryType: type, qty: orderQty, dueDate: date }).then(() => {
+          this.props.history.push("/inventory");
+        })
       });
     // api.inventory
     //   .update(item, { inventoryType: type, qty: orderQty, dueDate: date })
