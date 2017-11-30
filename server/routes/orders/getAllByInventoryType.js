@@ -7,8 +7,8 @@ module.exports = {
       let inventoryType = request.payload;
       this.models.Order
         .orderBy({ index: "dueDate" })
-        .filter({ inventoryType } || {})
         .filter({ status: "open" })
+        .filter({ inventoryType } || {})
         .getJoin({ item: true })
         .then(res => {
           reply(res)
