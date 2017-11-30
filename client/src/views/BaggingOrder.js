@@ -9,7 +9,7 @@ class BaggingOrder extends Component {
 
     this.state = {
       orders: [],
-      invTypes: ["bagged1", "bagged5", "bagged10", "bagged12oz"]
+      invTypes: ["roastedBulk"]
     };
   }
 
@@ -22,6 +22,7 @@ class BaggingOrder extends Component {
       });
     });
   }
+
   render() {
     let { orders, invTypes } = this.state;
     if (!orders) {

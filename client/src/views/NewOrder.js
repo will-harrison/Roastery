@@ -83,9 +83,16 @@ class NewOrder extends Component {
   onFormSubmit = submitEvent => {
     submitEvent.preventDefault();
     let { item, type, inventoryType, orderQty, date } = this.state;
-    api.order.createOrder({ itemId: item, inventoryType: type, orderQty, dueDate: date }).then(() => {
-      this.props.history.push("/inventory");
-    })
+    api.order
+      .createOrder({
+        itemId: item,
+        inventoryType: type,
+        orderQty,
+        dueDate: date
+      })
+      .then(() => {
+        this.props.history.push("/inventory");
+      });
     // api.inventory
     //   .update(item, { inventoryType: type, qty: orderQty, dueDate: date })
     //   .then(data => {
