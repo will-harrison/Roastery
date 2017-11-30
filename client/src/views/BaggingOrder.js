@@ -15,7 +15,7 @@ class BaggingOrder extends Component {
     };
   }
 
-  componentDidMount() {
+  getInventory = () => {
     let { invTypes } = this.state;
     api.order.getOrdersByInventoryType(invTypes).then(orders => {
       this.setState(state => {
@@ -25,6 +25,10 @@ class BaggingOrder extends Component {
         };
       });
     });
+  };
+
+  componentDidMount() {
+    this.getInventory();
   }
 
   closeOrder = id => {
@@ -33,7 +37,7 @@ class BaggingOrder extends Component {
       if (this.props.match.url === "/bagging-order") {
         return (window.location = "/bagging-order");
       }
-      this.props.history.push("/bagging-order");
+      this.getInventory();
     });
   };
 
