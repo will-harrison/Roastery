@@ -8,6 +8,7 @@ let Order = require("./Order")(db);
 Inventory.hasOne(Item, "item", "itemId", "id");
 Item.hasOne(Inventory, "inventory", "id", "itemId");
 Item.hasMany(Order, "orders", "id", "itemId");
+Order.hasOne(Item, "item", "itemId", "id");
 
 module.exports = {
   User,

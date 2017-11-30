@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { format } from 'date-fns';
 import PageHeader from "../components/PageHeader";
 import api from "../api";
 import OnOrder from "../components/OnOrder";
@@ -9,21 +10,24 @@ class PlacedOrders extends Component {
 
     this.state = {
       orders: [],
-      invTypes: ["bagged1", "bagged5", "bagged10", "bagged12oz"]
+      invTypes: ["greenBulk"]
     };
   }
 
   componentDidMount() {
-    api.inventory.getAll().then(data => {
+    let { invTypes } = this.state;
+    api.order.getOrdersByInventoryType(invTypes).then(orders => {
       this.setState(state => {
         return {
-          orders: data
-        };
-      });
-    });
+          ...state,
+          orders
+        }
+      })
+    })
   }
 
   render() {
+    console.log(this.state)
     let { orders, invTypes } = this.state;
     if (!orders) {
       <div>No Pending Orders</div>;
@@ -31,7 +35,13 @@ class PlacedOrders extends Component {
     return (
       <div>
         <PageHeader>Placed Orders</PageHeader>
-        <OnOrder orders={orders} invTypes={invTypes} />
+        {orders.map(order => (
+          <div key={order.id}>
+            <div>{order.item.name}</div>
+            <div>{order.orderQty}</div>
+            <div>{format(order.dueDate, "MM/DD/YY")}</div>
+          </div>
+        ))}
       </div>
     );
   }

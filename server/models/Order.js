@@ -6,6 +6,9 @@ module.exports = (db) => {
     dueDate: db.type.date(),
     status: db.type.string().default("open")
   });
+  Order.ensureIndex("inventoryType");
+  Order.ensureIndex("dueDate");
+  Order.ensureIndex("status");
 
   return Order;
 }
