@@ -1,10 +1,9 @@
 import React, { Component } from "react";
 import api from "../api";
-import OnOrder from "../components/OnOrder";
 import PageHeader from "../components/PageHeader";
-import { Order, Name, Qty, SDate, Button } from "../components/Order";
-
 import { format } from "date-fns";
+import { Order, Name, Qty, SDate, Button } from "../components/Order";
+import styled from "styled-components";
 
 class RoastOrder extends Component {
   constructor(props) {
@@ -27,6 +26,16 @@ class RoastOrder extends Component {
     });
   }
 
+  closeOrder = id => {
+    console.log(id);
+    api.order.close(id).then(() => {
+      if (this.props.match.url === "/roast-order") {
+        return (window.location = "/roast-order");
+      }
+      this.props.history.push("/roast-order");
+    });
+  };
+
   render() {
     let { orders, invTypes } = this.state;
     return (
@@ -38,7 +47,7 @@ class RoastOrder extends Component {
             <Name>{order.item.name}</Name>
             <Qty>{order.orderQty} lbs on order</Qty>
             <SDate>Due {format(order.dueDate, "MM/DD/YY")}</SDate>
-            <Button>Roast</Button>
+            <Button onClick={() => this.closeOrder(order.id)}>Roast</Button>
           </Order>
         ))}
       </div>

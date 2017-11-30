@@ -1,5 +1,6 @@
 module.exports = [
   require("./create"),
   require("./getAll"),
-  require("./getAllByInventoryType")
+  require("./getAllByInventoryType"),
+  require("./close")
 ];

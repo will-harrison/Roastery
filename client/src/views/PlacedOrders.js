@@ -1,9 +1,9 @@
 import React, { Component } from "react";
-import { format } from "date-fns";
-import styled from 'styled-components';
-import PageHeader from "../components/PageHeader";
 import api from "../api";
+import PageHeader from "../components/PageHeader";
+import { format } from "date-fns";
 import { Order, Name, Qty, SDate, Button } from "../components/Order";
+import styled from "styled-components";
 
 class PlacedOrders extends Component {
   constructor() {
@@ -27,6 +27,16 @@ class PlacedOrders extends Component {
     });
   }
 
+  closeOrder = id => {
+    console.log(id);
+    api.order.close(id).then(() => {
+      if (this.props.match.url === "/placed-orders") {
+        return (window.location = "/placed-orders");
+      }
+      this.props.history.push("/placed-orders");
+    });
+  };
+
   render() {
     console.log(this.state);
     let { orders, invTypes } = this.state;
@@ -41,14 +51,12 @@ class PlacedOrders extends Component {
             <Name>{order.item.name}</Name>
             <Qty>{order.orderQty} lbs on order</Qty>
             <SDate>Due {format(order.dueDate, "MM/DD/YY")}</SDate>
-            <Button>Recieve</Button>
+            <Button onClick={() => this.closeOrder(order.id)}>Recieve</Button>
           </Order>
         ))}
       </div>
     );
   }
 }
-
-
 
 export default PlacedOrders;

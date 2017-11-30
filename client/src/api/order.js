@@ -23,7 +23,7 @@ const getOrderById = id => {
     .catch(err => err);
 };
 
-const getOrdersByInventoryType = (invTypes) => {
+const getOrdersByInventoryType = invTypes => {
   let ordersbyInvType = invTypes.map(inventoryType => {
     return fetch(CREATE_URL(), {
       method: "POST",
@@ -31,18 +31,18 @@ const getOrdersByInventoryType = (invTypes) => {
       headers: { "Content-Type": "application/json" }
     })
       .then(response => response.json())
-      .catch(err => err)
+      .catch(err => err);
   });
 
   return Promise.all(ordersbyInvType).then(orders => {
-    orders = orders.reduce((allOrders, ordersOfType) => [
-      ...allOrders,
-      ...ordersOfType
-    ], [])
+    orders = orders.reduce(
+      (allOrders, ordersOfType) => [...allOrders, ...ordersOfType],
+      []
+    );
 
     return orders;
-  })
-}
+  });
+};
 
 const getOrders = () => {
   return fetch(CREATE_URL(), {
@@ -55,9 +55,23 @@ const getOrders = () => {
     .catch(err => err);
 };
 
+const close = id => {
+  return fetch(CREATE_URL(`${id}/close`), {
+    method: "PATCH",
+    headers: {
+      "Content-Type": "application/json"
+    }
+  })
+    .then(response => response.json())
+    .catch(err => {
+      console.log(err);
+    });
+};
+
 export default {
   createOrder,
   getOrderById,
   getOrders,
-  getOrdersByInventoryType
+  getOrdersByInventoryType,
+  close
 };

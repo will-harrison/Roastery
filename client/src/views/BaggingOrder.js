@@ -3,6 +3,7 @@ import api from "../api";
 import PageHeader from "../components/PageHeader";
 import { format } from "date-fns";
 import { Order, Name, Qty, SDate, Button } from "../components/Order";
+import styled from "styled-components";
 
 class BaggingOrder extends Component {
   constructor() {
@@ -26,10 +27,19 @@ class BaggingOrder extends Component {
     });
   }
 
+  closeOrder = id => {
+    console.log(id);
+    api.order.close(id).then(() => {
+      if (this.props.match.url === "/bagging-order") {
+        return (window.location = "/bagging-order");
+      }
+      this.props.history.push("/bagging-order");
+    });
+  };
+
   render() {
     console.log(this.state);
     let { orders, invTypes } = this.state;
-
     if (!orders) {
       <div>No Pending Orders</div>;
     }
@@ -41,7 +51,7 @@ class BaggingOrder extends Component {
             <Name>{order.item.name}</Name>
             <Qty>{order.orderQty} lbs on order</Qty>
             <SDate>Due {format(order.dueDate, "MM/DD/YY")}</SDate>
-            <Button>Bag</Button>
+            <Button onClick={() => this.closeOrder(order.id)}>Bag</Button>
           </Order>
         ))}
       </div>
