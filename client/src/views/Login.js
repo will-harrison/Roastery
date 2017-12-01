@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import api from "../api";
+import { Input } from "semantic-ui-react";
+import styled from "styled-components";
 
 class Login extends Component {
   constructor() {
@@ -38,10 +40,10 @@ class Login extends Component {
 
   render() {
     return (
-      <div>
+      <Container>
         <h1>Login</h1>
         <form onSubmit={this.onFormSubmit}>
-          <input
+          <Input
             required
             type={"email"}
             name={"email"}
@@ -49,7 +51,7 @@ class Login extends Component {
             onChange={this.onInputChange}
           />
           <br />
-          <input
+          <Input
             required
             type={"password"}
             name={"password"}
@@ -58,11 +60,20 @@ class Login extends Component {
           />
           <br />
           <br />
-          <input type={"submit"} value={"Login"} />
+          <Input type={"submit"} value={"Login"} />
         </form>
-      </div>
+      </Container>
     );
   }
 }
+
+const Container = styled.div`
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+`;
 
 export default Login;

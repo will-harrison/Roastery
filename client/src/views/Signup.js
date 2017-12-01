@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import api from "../api";
+import styled from "styled-components";
+import { Input } from "semantic-ui-react";
 
 class Signup extends Component {
   constructor() {
@@ -36,27 +38,30 @@ class Signup extends Component {
 
   render() {
     return (
-      <div>
+      <Container>
         <h1>Signup</h1>
         <form onSubmit={this.onFormSubmit}>
-          <input
+          <Input
             required
+            size="huge"
             type={"text"}
             name={"companyName"}
             placeholder={"CompanyName"}
             onChange={this.onInputChange}
           />
           <br />
-          <input
+          <Input
             required
+            size="huge"
             type={"email"}
             name={"email"}
             placeholder={"Email"}
             onChange={this.onInputChange}
           />
           <br />
-          <input
+          <Input
             required
+            size="huge"
             type={"password"}
             name={"password"}
             placeholder={"Password"}
@@ -64,11 +69,20 @@ class Signup extends Component {
           />
           <br />
           <br />
-          <input type={"submit"} value={"Signup"} />
+          <Input type={"submit"} value={"Signup"} />
         </form>
-      </div>
+      </Container>
     );
   }
 }
+
+const Container = styled.div`
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+`;
 
 export default Signup;

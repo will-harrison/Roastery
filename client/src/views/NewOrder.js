@@ -4,6 +4,7 @@ import jwt from "jsonwebtoken";
 import { format } from "date-fns";
 import PageHeader from "../components/PageHeader";
 import styled from "styled-components";
+import Navbar from "../containers/Navbar";
 
 class NewOrder extends Component {
   constructor() {
@@ -120,6 +121,7 @@ class NewOrder extends Component {
     let { type, inventoryType, items, minQty, minValue } = this.state;
     return (
       <div>
+        <Navbar />
         <PageHeader>New Order</PageHeader>
         <form onSubmit={this.onFormSubmit}>
           <FormRow>
