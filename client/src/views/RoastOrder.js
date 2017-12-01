@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import api from "../api";
-import PageHeader from "../components/PageHeader";
 import { format } from "date-fns";
-import { Order, Name, Qty, SDate, Button } from "../components/Order";
 import styled from "styled-components";
+import PageHeader from "../components/PageHeader";
+import Order from '../components/Order';
 
 class RoastOrder extends Component {
   constructor(props) {
@@ -45,15 +45,7 @@ class RoastOrder extends Component {
     return (
       <div>
         <PageHeader>Roast Orders</PageHeader>
-
-        {orders.map(order => (
-          <Order key={order.id}>
-            <Name>{order.item.name}</Name>
-            <Qty>{order.orderQty} lbs on order</Qty>
-            <SDate>Due {format(order.dueDate, "MM/DD/YY")}</SDate>
-            <Button onClick={() => this.closeOrder(order.id)}>Roast</Button>
-          </Order>
-        ))}
+        <Order orders={orders} complete={this.getInventory} />
       </div>
     );
   }

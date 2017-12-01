@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import api from "../api";
-import PageHeader from "../components/PageHeader";
 import { format } from "date-fns";
-import { Order, Name, Qty, SDate, Button } from "../components/Order";
 import styled from "styled-components";
+import PageHeader from "../components/PageHeader";
+import Order from '../components/Order';
 
 class BaggingOrder extends Component {
   constructor() {
@@ -31,18 +31,17 @@ class BaggingOrder extends Component {
     this.getInventory();
   }
 
-  closeOrder = id => {
+  closeOrder = (id, itemId, qty, inventoryType) => {
     console.log(id);
     api.order.close(id).then(() => {
-      if (this.props.match.url === "/bagging-order") {
-        return (window.location = "/bagging-order");
-      }
+      api.inventory.update(itemId, { qty, inventoryType, orderStatus: "onHand" })
+      qty = -qty;
+      api.inventory.update(itemId, { qty, inventoryType, orderStatus: "onOrder" })
       this.getInventory();
     });
   };
 
   render() {
-    console.log(this.state);
     let { orders, invTypes } = this.state;
     if (!orders) {
       <div>No Pending Orders</div>;
@@ -50,14 +49,7 @@ class BaggingOrder extends Component {
     return (
       <div>
         <PageHeader>Bag Order</PageHeader>
-        {orders.map(order => (
-          <Order key={order.id}>
-            <Name>{order.item.name}</Name>
-            <Qty>{order.orderQty} lbs on order</Qty>
-            <SDate>Due {format(order.dueDate, "MM/DD/YY")}</SDate>
-            <Button onClick={() => this.closeOrder(order.id)}>Bag</Button>
-          </Order>
-        ))}
+        <Order orders={orders} />
       </div>
     );
   }

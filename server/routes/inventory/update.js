@@ -6,13 +6,13 @@ module.exports = {
     handler: function (request, reply) {
       let { id } = request.params;
       console.log(id)
-      let { inventoryType, qty, dueDate } = request.payload;
+      let { inventoryType, qty, orderStatus } = request.payload;
       console.log(request.payload)
       this.models.Inventory
         .filter({ itemId: id })
         .then(res => {
           console.log(res)
-          let currentQty = res[0].inventory[inventoryType].onOrder;
+          let currentQty = res[0].inventory[inventoryType][orderStatus];
           let updateQty = parseInt(qty);
 
           let newQty = updateQty + currentQty;
@@ -24,8 +24,7 @@ module.exports = {
             .update({
               inventory: {
                 [inventoryType]: {
-                  onOrder: newQty,
-                  nextDueDate: dueDate
+                  [orderStatus]: newQty
                 }
               }
             })
