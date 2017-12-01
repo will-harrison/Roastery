@@ -53,7 +53,6 @@ class NewOrder extends Component {
   }
 
   componentDidMount() {
-    // let { token } = jwt.decode(localStorage.getItem(token));
     api.items.getAll().then(items => {
       if (!items || !items[0]) {
         return;
