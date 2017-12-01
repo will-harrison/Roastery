@@ -17,20 +17,18 @@ const boxSource = {
   }
 };
 
-const WorkOrder = ({ item, orderQty, type, isDragging, connectDragSource }) => {
+const WorkOrder = ({ item, orderQty, type, isDragging, connectDragSource }) =>
   connectDragSource(
     <div style={style}>
       <Card raised>
         <Card.Content
           fluid
-          header={!item ? "Coffee" : item.name}
+          header={!item ? "" : item.name}
           description={`Qty: ${orderQty}`}
         />
       </Card>
     </div>
   );
-};
-
 export default DragSource(
   props => props.type,
   boxSource,
