@@ -13,7 +13,7 @@ const closeOrder = (id, itemId, qty, inventoryType, complete) => {
   });
 };
 
-const Order = ({ orders, complete }) => {
+const Order = ({ orders, complete, orderType }) => {
   return (
     <div>
       {orders.map(order => {
@@ -23,7 +23,7 @@ const Order = ({ orders, complete }) => {
             <Name>{order.item.name}</Name>
             <Qty>{order.orderQty} lbs on order</Qty>
             <SDate>Due {format(order.dueDate, "MM/DD/YY")}</SDate>
-            <Button onClick={() => closeOrder(order.id, order.item.id, order.orderQty, order.inventoryType, complete)}>Bag</Button>
+            <Button onClick={() => closeOrder(order.id, order.item.id, order.orderQty, order.inventoryType, complete)}>{orderType}</Button>
           </Container>
         )
       })}

@@ -41,7 +41,7 @@ class PlacedOrders extends Component {
       <div>
         <Navbar />
         <PageHeader>Placed Orders</PageHeader>
-        <Order orders={orders} complete={this.getInventory} />
+        <Order orders={orders} complete={this.getInventory} orderType={"Recieve"} />
       </div>
     );
   }

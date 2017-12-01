@@ -41,7 +41,7 @@ class BaggingOrder extends Component {
       <div>
         <Navbar />
         <PageHeader>Bag Order</PageHeader>
-        <Order orders={orders} complete={this.getInventory} />
+        <Order orders={orders} complete={this.getInventory} orderType={"Bag"} />
       </div>
     );
   }

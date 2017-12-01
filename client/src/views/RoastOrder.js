@@ -37,7 +37,7 @@ class RoastOrder extends Component {
       <div>
         <Navbar />
         <PageHeader>Roast Orders</PageHeader>
-        <Order orders={orders} complete={this.getInventory} />
+        <Order orders={orders} complete={this.getInventory} orderType={"Roast"} />
       </div >
     );
   }
