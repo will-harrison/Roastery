@@ -55,6 +55,9 @@ class NewOrder extends Component {
   componentDidMount() {
     // let { token } = jwt.decode(localStorage.getItem(token));
     api.items.getAll().then(items => {
+      if (!items || !items[0]) {
+        return;
+      }
       this.setState(state => {
         return {
           ...state,
@@ -92,9 +95,15 @@ class NewOrder extends Component {
         dueDate: date
       })
       .then(() => {
-        api.inventory.update(item, { inventoryType: type, qty: orderQty, orderStatus: "onOrder" }).then(() => {
-          this.props.history.push("/inventory");
-        })
+        api.inventory
+          .update(item, {
+            inventoryType: type,
+            qty: orderQty,
+            orderStatus: "onOrder"
+          })
+          .then(() => {
+            this.props.history.push("/inventory");
+          });
       });
     // api.inventory
     //   .update(item, { inventoryType: type, qty: orderQty, dueDate: date })

@@ -46,6 +46,7 @@ class WorkOrderKanban extends Component {
         "bagged12oz"
       ])
       .then(orders => {
+        console.log(orders);
         this.setState(state => {
           return {
             ...state,

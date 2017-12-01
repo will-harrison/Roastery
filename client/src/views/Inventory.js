@@ -35,6 +35,7 @@ class Inventory extends Component {
 
   render() {
     let { items, sortOrder } = this.state;
+    console.log(items);
     return (
       <div>
         <Navbar />

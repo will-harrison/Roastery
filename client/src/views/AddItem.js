@@ -47,7 +47,15 @@ class AddItem extends Component {
     };
     api.items
       .createItem(item)
-      .then(() => this.getAllItems())
+      .then(() => {
+        this.setState(state => {
+          return {
+            name: "",
+            description: ""
+          };
+        });
+        this.getAllItems();
+      })
       .catch(err => console.log(err));
   };
   render() {
@@ -63,6 +71,7 @@ class AddItem extends Component {
             onChange={this.onInputChange}
             name={"name"}
             type="text"
+            value={this.state.name}
           />
           <label>Description</label>
           <input
@@ -70,6 +79,7 @@ class AddItem extends Component {
             onChange={this.onInputChange}
             name={"description"}
             type="text"
+            value={this.state.description}
           />
           <input type="submit" value={"AddItem"} />
         </form>
