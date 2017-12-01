@@ -4,6 +4,7 @@ import { format } from "date-fns";
 import styled from "styled-components";
 import PageHeader from "../components/PageHeader";
 import Order from '../components/Order';
+import Navbar from "../containers/Navbar";
 
 class PlacedOrders extends Component {
   constructor() {
@@ -31,16 +32,6 @@ class PlacedOrders extends Component {
     this.getInventory();
   }
 
-  closeOrder = id => {
-    console.log(id);
-    api.order.close(id).then(() => {
-      if (this.props.match.url === "/placed-orders") {
-        return (window.location = "/placed-orders");
-      }
-      this.getInventory();
-    });
-  };
-
   render() {
     let { orders, invTypes } = this.state;
     if (!orders) {
@@ -48,8 +39,9 @@ class PlacedOrders extends Component {
     }
     return (
       <div>
+        <Navbar />
         <PageHeader>Placed Orders</PageHeader>
-        <Order orders={orders} />
+        <Order orders={orders} complete={this.getInventory} />
       </div>
     );
   }

@@ -4,6 +4,7 @@ import { format } from "date-fns";
 import styled from "styled-components";
 import PageHeader from "../components/PageHeader";
 import Order from '../components/Order';
+import Navbar from "../containers/Navbar";
 
 class BaggingOrder extends Component {
   constructor() {
@@ -31,16 +32,6 @@ class BaggingOrder extends Component {
     this.getInventory();
   }
 
-  closeOrder = (id, itemId, qty, inventoryType) => {
-    console.log(id);
-    api.order.close(id).then(() => {
-      api.inventory.update(itemId, { qty, inventoryType, orderStatus: "onHand" })
-      qty = -qty;
-      api.inventory.update(itemId, { qty, inventoryType, orderStatus: "onOrder" })
-      this.getInventory();
-    });
-  };
-
   render() {
     let { orders, invTypes } = this.state;
     if (!orders) {
@@ -48,8 +39,9 @@ class BaggingOrder extends Component {
     }
     return (
       <div>
+        <Navbar />
         <PageHeader>Bag Order</PageHeader>
-        <Order orders={orders} />
+        <Order orders={orders} complete={this.getInventory} />
       </div>
     );
   }

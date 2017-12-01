@@ -3,7 +3,7 @@ module.exports = {
   path: "/api/users/login",
   config: {
     auth: { mode: "optional" },
-    handler: function (request, reply) {
+    handler: function(request, reply) {
       let { email, password } = request.payload;
       this.models.User.filter({ email: email })
         .then(users => {
@@ -14,10 +14,11 @@ module.exports = {
         .then(user => {
           if (!user) throw "Email and password combination are incorrect.";
           delete user.password;
+          console.log(user.generateJWT());
           return user.generateJWT();
         })
-        .then(user => reply(user))
-        .catch(err => err)
+        .then(user => reply({ token: user }))
+        .catch(err => err);
     }
   }
 };

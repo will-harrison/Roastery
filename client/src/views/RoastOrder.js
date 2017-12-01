@@ -4,6 +4,7 @@ import { format } from "date-fns";
 import styled from "styled-components";
 import PageHeader from "../components/PageHeader";
 import Order from '../components/Order';
+import Navbar from "../containers/Navbar";
 
 class RoastOrder extends Component {
   constructor(props) {
@@ -30,23 +31,14 @@ class RoastOrder extends Component {
     this.getInventory();
   }
 
-  closeOrder = id => {
-    console.log(id);
-    api.order.close(id).then(() => {
-      if (this.props.match.url === "/roast-order") {
-        return (window.location = "/roast-order");
-      }
-      this.getInventory();
-    });
-  };
-
   render() {
     let { orders, invTypes } = this.state;
     return (
       <div>
+        <Navbar />
         <PageHeader>Roast Orders</PageHeader>
         <Order orders={orders} complete={this.getInventory} />
-      </div>
+      </div >
     );
   }
 }
