@@ -24,7 +24,7 @@ const WorkOrder = ({ item, orderQty, type, isDragging, connectDragSource }) =>
         <Card.Content
           fluid
           header={!item ? "" : item.name}
-          description={`Qty: ${orderQty}`}
+          description={`Qty: ${orderQty} lbs`}
         />
       </Card>
     </div>
