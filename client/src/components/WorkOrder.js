@@ -12,16 +12,20 @@ const style = {
 const boxSource = {
   beginDrag(props) {
     return {
-      name: props.name
+      id: props.id
     };
   }
 };
 
-const WorkOrder = ({ name, pounds, type, isDragging, connectDragSource }) =>
+const WorkOrder = ({ item, orderQty, type, isDragging, connectDragSource }) =>
   connectDragSource(
     <div style={style}>
       <Card raised>
-        <Card.Content fluid header={name} description={`${pounds}lbs`} />
+        <Card.Content
+          fluid
+          header={item.name}
+          description={`Qty: ${orderQty}`}
+        />
       </Card>
     </div>
   );

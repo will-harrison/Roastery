@@ -35,12 +35,10 @@ const getOrdersByInventoryType = invTypes => {
   });
 
   return Promise.all(ordersbyInvType).then(orders => {
-    orders = orders.reduce(
+    return orders.reduce(
       (allOrders, ordersOfType) => [...allOrders, ...ordersOfType],
       []
     );
-
-    return orders;
   });
 };
 
